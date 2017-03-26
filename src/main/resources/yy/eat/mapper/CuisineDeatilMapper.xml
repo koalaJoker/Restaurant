@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yy.eat.mapper.CuisineDeatilMapper">
+
+    <resultMap id="baseResultMap" type="yy.eat.dto.CuisineDetail">
+        <id column="PARENT_DATAIL_ID" property="detailId"></id>
+        <result column="PARENT_CUISINE_ID" property="cuisineId"></result>
+        <result column="PARENT_DETAIL_CUISINE_NAME" property="detailCuisineName"></result>
+        <result column="PARENT_PARENT_CUISINE_ID" property="parentCuisineId"></result>
+        <collection property="detailList" ofType="yy.eat.dto.CuisineDetail">
+            <id column="DETAIL_ID" property="detailId"></id>
+            <result column="CUISINE_ID" property="cuisineId"></result>
+            <result column="DETAIL_CUISINE_NAME" property="detailCuisineName"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectCuisineDetail" resultMap="baseResultMap">
+     SELECT
+	r1.DETAIL_ID PARENT_DATAIL_ID,
+	r1.CUISINE_ID PARENT_CUISINE_ID,
+	r1.DETAIL_CUISINE_NAME PARENT_DETAIL_CUISINE_NAME,
+    r1.PARENT_CUISINE_ID PARENT_PARENT_CUISINE_ID,
+	r2.DETAIL_ID,
+	r2.CUISINE_ID,
+	r2.DETAIL_CUISINE_NAME,
+    r2.PARENT_CUISINE_ID
+    FROM
+	res_cuisine_detail r1 left JOIN
+	res_cuisine_detail r2 ON r1.DETAIL_ID=r2.PARENT_CUISINE_ID
+    WHERE
+    r1.PARENT_CUISINE_ID IS NULL
+     </select>
+</mapper>
