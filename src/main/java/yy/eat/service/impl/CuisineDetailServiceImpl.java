@@ -27,4 +27,9 @@ public class CuisineDetailServiceImpl implements CuisineDetailService {
     public List<CuisineDetail> selectCuisineDetail() {
         return cuisineDeatilMapper.selectCuisineDetail();
     }
+
+    @Override
+    public List<CuisineDetail> selectMenu(CuisineDetail cuisineDetail) {
+        return cuisineDeatilMapper.selectMenu(cuisineDetail);
+    }
 }

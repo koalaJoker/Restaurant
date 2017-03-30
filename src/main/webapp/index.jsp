@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -33,12 +34,7 @@
     </script>
     <!-- start-smoth-scrolling -->
 </head>
-<script type="text/javascript">
-<c:if test="${cuisineDetailList==null}">
-<%--window.location.href="selectCuisineDetail.action";--%>
-    <jsp:forward page="selectCuisineDetail.action"></jsp:forward>
-</c:if>
-</script>
+
 <body>
 <!-- header -->
 

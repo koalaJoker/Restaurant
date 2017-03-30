@@ -57,51 +57,41 @@
 </div>
 <!-- //breadcrumbs -->
 <!--- products --->
-<div class="products">
-    <div class="container">
+<div class="products" >
+    <div class="container"  id="scroll">
         <div class="col-md-4 products-left">
             <div class="categories">
                 <h2>菜单</h2>
                 <ul class="cate">
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fruits And Vegetables</a></li>
-                    <ul>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cuts & Sprouts</a></li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flowers</a></li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Herbs & Seasonings</a></li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Vegetables</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>International Vegetables</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Fruits & Vegetables</a></li>
-                    </ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Grocery & Staples</a></li>
-                    <ul>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dals & Pulses</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dry Fruits</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Edible Oils & Ghee</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flours & Sooji</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Masalas & Spices</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Staples</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice & Rice Products</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Salt, Sugar & Jaggery</a></li>
-                    </ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>PersonalCare</a></li>
-                    <ul>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Baby Care</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cosmetics</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Deos & Perfumes</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Skin Care</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sanitary Needs</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Oral Care</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Personal Hygiene</a> </li>
-                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Shaving Needs</a></li>
-                    </ul>
+                    <c:if test="${menulList!=null}">
+                        <c:forEach var="menu" items="${menulList}">
+                            <c:forEach var="cuisine" items="${menu.detailList}">
+                                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${cuisine.detailCuisineName}</a></li>
+                                <ul>
+                                  <c:forEach var="food" items="${cuisine.foodList}">
+                                      <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${food.foodName}</a></li>
+                                  </c:forEach>
+                              </ul>
+                            </c:forEach>
+                        </c:forEach>
+                    </c:if>
                 </ul>
             </div>
         </div>
+        <%--<div class="w3l_search" style="margin-right: 38px">--%>
+            <%--<form action="#" method="post">--%>
+                <%--<input type="search" name="Search" placeholder="Search for a Product..." required="">--%>
+                <%--<button type="submit" class="btn btn-default search" aria-label="Left Align">--%>
+                    <%--<i class="fa fa-search" aria-hidden="true"> </i>--%>
+                <%--</button>--%>
+                <%--<div class="clearfix"></div>--%>
+            <%--</form>--%>
+        <%--</div>--%>
         <div class="col-md-8 products-right">
-            <div class="products-right-grid">
+            <div class="products-right-grid" >
                 <div class="products-right-grids">
                     <div class="sorting">
-                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect" style="width: 180px;">
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
@@ -109,7 +99,7 @@
                         </select>
                     </div>
                     <div class="sorting-left">
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect" >
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
                             <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>
@@ -603,6 +593,10 @@
     });
 </script>
 <!-- //main slider-banner -->
-
+<script>
+$(function(){
+$("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
+})
+</script>
 </body>
 </html>

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import yy.eat.dto.CuisineDetail;
 import yy.eat.service.CuisineDetailService;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -27,22 +27,24 @@ public class CuisineController {
     private CuisineDetailService cuisineDetailService;
 
     @RequestMapping("/selectCuisineDetail")
-    public ModelAndView selectCuisineDetail(HttpSession httpSession){
+    public ModelAndView selectCuisineDetail(HttpServletRequest request){
         List<CuisineDetail> cuisineDetailList=cuisineDetailService.selectCuisineDetail();
 //        ModelAndView modelAndView =new ModelAndView();
-        httpSession.setAttribute("cuisineDetailList", cuisineDetailList);
+        request.getSession().setAttribute("cuisineDetailList", cuisineDetailList);
 //        modelAndView.addObject("cuisineDetailList",cuisineDetailList);
 //        modelAndView.setViewName("index");
-        return new ModelAndView(new RedirectView("index.jsp"));
+        return new ModelAndView(new RedirectView("header.jsp"));
     }
 
     @RequestMapping("/selectMenu")
-    public ModelAndView selectMenu(Long detailId){
-        System.out.println(detailId);
-        List<CuisineDetail> cuisineDetailList=cuisineDetailService.selectCuisineDetail();
+    public ModelAndView selectMenu(CuisineDetail cuisineDetail){
+        List<CuisineDetail> menulList=cuisineDetailService.selectMenu(cuisineDetail);
         ModelAndView modelAndView =new ModelAndView();
-        modelAndView.addObject("cuisineDetailList",cuisineDetailList);
+        modelAndView.addObject("menulList",menulList);
+
+
         modelAndView.setViewName("menu");
         return modelAndView;
     }
+
 }

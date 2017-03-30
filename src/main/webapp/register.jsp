@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: 袁媛
-  Date: 2017/3/21
-  Time: 13:15
+  Date: 2017/3/30
+  Time: 11:19
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>注册</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,6 +43,7 @@
 
 <body>
 <!-- header -->
+
 <%@ include file="header.jsp" %>
 <!-- //navigation -->
 <!-- breadcrumbs -->
@@ -50,31 +51,45 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Login Page</li>
+            <li class="active">Register Page</li>
         </ol>
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- login -->
-<div class="login">
+<!-- register -->
+<div class="register">
     <div class="container">
-        <h2>Login Form</h2>
-
-        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form>
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
-                <div class="forgot">
-                    <a href="#">Forgot Password?</a>
+        <h2>注册</h2>
+        <div class="login-form-grids">
+            <h5>个人信息</h5>
+            <form action="#" method="post">
+                <input type="text" placeholder="姓名：" required=" " >
+                <div style="margin-top: 10px">
+                    男：<input type="radio" name="sex" value="男">&nbsp;&nbsp;&nbsp;女：<input type="radio" name="sex" value="女"></div>
+            </form>
+            <h6>登陆信息</h6>
+            <form action="#" method="post">
+                <input type="text" placeholder="请输入手机号" required=" " >
+                <div style="margin-top: 10px" >
+                    <input type="text" name="" style="width: 300px" id="code"  placeholder="请输入验证码" required=" ">
+                    <span id="dyMobileButton" class="btn btn-success" style="margin-left: 30px">获取</span></a>
                 </div>
-                <input type="submit" value="Login">
+                <input type="password" placeholder="请输入密码" required=" " >
+                <input type="password" placeholder="确认密码" required=" " >
+                <div class="register-check-box">
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+                    </div>
+                </div>
+                <input type="submit" value="Register">
             </form>
         </div>
-        <h4>For New People</h4>
-        <p><a href="registered.html">Register Here</a> (Or) go back to <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        <div class="register-home">
+            <a href="index.html">主页</a>
+        </div>
     </div>
 </div>
-<!-- //login -->
+<!-- //register -->
 <!-- //footer -->
 <div class="footer">
     <div class="container">
@@ -101,7 +116,7 @@
             <div class="col-md-3 w3_footer_grid">
                 <h3>Category</h3>
                 <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="food.html">Groceries</a></li>
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
                     <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
                     <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
                     <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>

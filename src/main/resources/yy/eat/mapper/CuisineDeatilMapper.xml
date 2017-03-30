@@ -11,6 +11,10 @@
             <id column="DETAIL_ID" property="detailId"></id>
             <result column="CUISINE_ID" property="cuisineId"></result>
             <result column="DETAIL_CUISINE_NAME" property="detailCuisineName"></result>
+            <collection property="foodList" ofType="yy.eat.dto.Food">
+                <id column="FOOD_ID" property="foodId"></id>
+                <result column="FOOD_NAME" property="foodName"></result>
+            </collection>
         </collection>
     </resultMap>
 
@@ -30,4 +34,29 @@
     WHERE
     r1.PARENT_CUISINE_ID IS NULL
      </select>
+
+    <select id="selectMenu" parameterType="yy.eat.dto.CuisineDetail" resultMap="baseResultMap">
+        SELECT
+            rcd1.DETAIL_ID PARENT_DATAIL_ID,
+            rcd1.DETAIL_CUISINE_NAME PARENT_DETAIL_CUISINE_NAME,
+            rcd1.CUISINE_ID PARENT_CUISINE_ID,
+            rcd1.PARENT_CUISINE_ID PARENT_PARENT_CUISINE_ID,
+            rcd2.DETAIL_ID,
+            rcd2.DETAIL_CUISINE_NAME,
+            rcd2.CUISINE_ID,
+            rcd2.PARENT_CUISINE_ID,
+            rf.FOOD_ID,
+            rf.FOOD_NAME
+        FROM
+            res_cuisine_detail rcd1,
+            res_cuisine_detail rcd2,
+            res_food rf
+        WHERE
+            FIND_IN_SET(
+                rcd1.DETAIL_ID,
+                getChildList (#{detailId})
+            )
+        AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
+        AND rcd2.DETAIL_ID = rf.DETAIL_ID
+    </select>
 </mapper>

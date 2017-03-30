@@ -23,6 +23,8 @@ public class CuisineDetail {
 
     private List<CuisineDetail> detailList;
 
+    private List<Food> foodList;
+
     public Long getDetailId() {
         return detailId;
     }
@@ -61,5 +63,13 @@ public class CuisineDetail {
 
     public void setDetailList(List<CuisineDetail> detailList) {
         this.detailList = detailList;
+    }
+
+    public List<Food> getFoodList() {
+        return foodList;
+    }
+
+    public void setFoodList(List<Food> foodList) {
+        this.foodList = foodList;
     }
 }

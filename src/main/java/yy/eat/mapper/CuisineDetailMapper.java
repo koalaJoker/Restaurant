@@ -1,7 +1,7 @@
 /**
- * Created by 袁媛 on 2017/3/22.
+ * Created by 袁媛 on 2017/3/30.
  */
-package yy.eat.service;
+package yy.eat.mapper;
 
 import yy.eat.dto.CuisineDetail;
 
@@ -9,11 +9,11 @@ import java.util.List;
 
 /**
  * @author yuan.yuan01@hand-china.com
- * @name: CuisineDetailService
+ * @name: CuisineDetailMapper
  * @Description: (描述此类的功能)
- * @date 2017年03月22日 22:50
+ * @date 2017年03月30日 9:15
  */
-public interface CuisineDetailService {
+public interface CuisineDetailMapper {
 
     List<CuisineDetail> selectCuisineDetail();
 
