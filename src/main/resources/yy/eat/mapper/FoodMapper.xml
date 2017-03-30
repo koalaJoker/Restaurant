@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yy.eat.mapper.FoodMapper">
+<select id="">
+SELECT
+	rf.*
+FROM
+	res_cuisine_detail rcd1,
+	res_cuisine_detail rcd2,
+	res_food rf
+WHERE
+	FIND_IN_SET(
+		rcd1.DETAIL_ID,
+		getChildList (7)
+	)
+AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
+AND rcd2.DETAIL_ID = rf.DETAIL_ID
+
+</select>
+
+</mapper>
