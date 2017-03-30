@@ -35,6 +35,7 @@
 </head>
 <script type="text/javascript">
 <c:if test="${cuisineDetailList==null}">
+<%--window.location.href="selectCuisineDetail.action";--%>
     <jsp:forward page="selectCuisineDetail.action"></jsp:forward>
 </c:if>
 </script>
@@ -71,7 +72,7 @@
 <!-- top-brands -->
 <div class="top-brands">
     <div class="container">
-        <h2>Top selling offers</h2>
+        <h2>Top selling offers ${1+1}</h2>
         <div class="grid_3 grid_5">
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">

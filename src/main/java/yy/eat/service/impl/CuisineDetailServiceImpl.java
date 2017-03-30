@@ -6,6 +6,7 @@ package yy.eat.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yy.eat.dto.CuisineDetail;
+import yy.eat.mapper.CuisineDetailMapper;
 import yy.eat.service.CuisineDetailService;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 public class CuisineDetailServiceImpl implements CuisineDetailService {
 
     @Autowired
-    private CuisineDeatilMapper cuisineDeatilMapper;
+    private CuisineDetailMapper cuisineDeatilMapper;
 
     @Override
     public List<CuisineDetail> selectCuisineDetail() {
