@@ -69,9 +69,9 @@
             </form>
             <h6>登陆信息</h6>
             <form action="#" method="post">
-                <input type="text" placeholder="请输入手机号" required=" " >
+                <input type="text" id="phone" placeholder="请输入手机号" required=" " >
                 <div style="margin-top: 10px" >
-                    <input type="text" name="" style="width: 300px" id="code"  placeholder="请输入验证码" required=" ">
+                    <input type="text" name="" style="width: 300px" id="code"  placeholder="请输入验证码"  required="">
                     <span id="dyMobileButton" class="btn btn-success" style="margin-left: 30px">获取</span></a>
                 </div>
                 <input type="password" placeholder="请输入密码" required=" " >
@@ -206,6 +206,36 @@
         });
 
     });
+    $(function(){
+        $("#dyMobileButton").click(function(){
+            var phone=$("#phone").val();
+            $.ajax({
+                url: "/sendSms.action?phone="+phone,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {}
+          });
+        });
+    })
+</script>
+<script type="text/javascript">
+    //创建AJAX异步对象
+    function createAJAX(){
+        var ajax = null;
+        try{
+            //如果IE5=IE12的话
+            ajax = new ActiveXObject("microsoft.xmlhttp");
+        }catch(e1){
+            try{
+                //如果是非IE的话
+                ajax = new XMLHttpRequest();
+            }catch(e2){
+                alert("你的浏览器中不支持异步对象，请换浏览器");
+            }
+        }
+        return ajax;
+    }
 </script>
 <!-- //main slider-banner -->
 

@@ -28,7 +28,7 @@ public class SmsServiceImpl implements SmsService{
 	@Override
 	public String sendSMS(SmsData smsData) {
 		if (null==userMapper.findUserByPhone(smsData.getPhone())) {
-			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(), smsData.getCode());
+			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),"123456");
 		}
 		return null;
 	}
