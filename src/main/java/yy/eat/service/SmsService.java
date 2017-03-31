@@ -13,6 +13,6 @@ import yy.eat.dto.SmsData;
  * @date 2017-03-31 11:24
  */
 public interface SmsService {
-	String sendSMS(SmsData smsData);
+	void sendSMS(SmsData smsData);
 }
 

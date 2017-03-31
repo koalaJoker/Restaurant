@@ -7,11 +7,11 @@ package yy.eat.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import yy.eat.dto.SmsData;
 import yy.eat.service.SmsService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Random;
 
 /**
  * @author LinKaiLong
@@ -25,12 +25,12 @@ public class UserController {
 	private SmsService smsService;
 
 	@RequestMapping("/sendSms")
-	public ModelAndView sendSMS(HttpServletRequest request) {
+	public void sendSMS(HttpServletRequest request) {
 		SmsData sms=new SmsData();
+		int radomInt = new Random().nextInt(999999);
 		sms.setPhone(request.getParameter("phone"));
-		sms.setCode(request.getParameter("code"));
+		sms.setCode(String.valueOf(radomInt));
         smsService.sendSMS(sms);
-		return null;
 	}
 
 }

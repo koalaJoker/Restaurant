@@ -21,16 +21,15 @@ import yy.eat.utils.RestTest;
 public class SmsServiceImpl implements SmsService{
    	@Autowired
 	private UserMapper userMapper;
-	final private String accountSid = "ef32dde9c4051406132b63fd136b4a7e";
-	final private String authToken = "ad7c5ef5055aac24187444cd12e01398";
-	final private String appId = "9b182847839749ef8da6fc0070e92e9f";
-	final private String templateId = "28502";
+	final  String accountSid = "ef32dde9c4051406132b63fd136b4a7e";
+	final  String authToken = "ad7c5ef5055aac24187444cd12e01398";
+	final  String appId = "9b182847839749ef8da6fc0070e92e9f";
+	final  String templateId = "28502";
 	@Override
-	public String sendSMS(SmsData smsData) {
+	public void sendSMS(SmsData smsData) {
 		if (null==userMapper.findUserByPhone(smsData.getPhone())) {
-			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),"123456");
+			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),smsData.getCode());
 		}
-		return null;
 	}
 }
 
