@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yy.eat.mapper.FoodsMapper">
+    <resultMap id="baseResultMap" type="yy.eat.dto.Foods">
+        <id column="FOOD_ID" property="foodId"></id>
+        <result column="FOOD_NAME" property="foodName"></result>
+        <result column="FOOD_IMAGE" property="foodImage"></result>
+        <result column="RECOMMEND_RATE" property="recommentRate"></result>
+        <result column="ORIGINAL_PRICE" property="originalPrice"></result>
+        <result column="DISCOUNT_PRICE" property="discountPrice"></result>
+        <result column="SALE_VOLUME" property="saleVolume"></result>
+        <result column="DESCRIPTION" property="description"></result>
+        <result column="DETAIL_ID" property="detailId"></result>
+    </resultMap>
+
+    <select id="selectFoods" parameterType="yy.eat.dto.PageData" resultMap="baseResultMap">
+        SELECT
+        rf.*
+        FROM
+        res_cuisine_detail rcd1,
+        res_cuisine_detail rcd2,
+        res_food rf
+        WHERE
+        FIND_IN_SET(
+        rcd1.DETAIL_ID,
+        getChildList (#{entity.detailId})
+        )
+        AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
+        AND rcd2.DETAIL_ID = rf.DETAIL_ID
+        <if test="entity.foodName!=null ">
+            AND rf.FOOD_Name  like CONCAT('%', #{entity.foodName}, '%')
+        </if>
+        limit #{startPage},#{pageSize}
+    </select>
+
+    <select id="foodsCount" parameterType="yy.eat.dto.PageData" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM
+        res_cuisine_detail rcd1,
+        res_cuisine_detail rcd2,
+        res_food rf
+        WHERE
+        FIND_IN_SET(
+        rcd1.DETAIL_ID,
+        getChildList (#{entity.detailId})
+        )
+        AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
+        AND rcd2.DETAIL_ID = rf.DETAIL_ID
+        <if test="entity.foodName!=null ">
+            AND rf.FOOD_Name  like CONCAT('%', #{entity.foodName}, '%')
+        </if>
+
+    </select>
+</mapper>

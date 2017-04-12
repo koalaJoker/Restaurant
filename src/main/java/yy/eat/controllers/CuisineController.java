@@ -5,11 +5,16 @@ package yy.eat.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import yy.eat.dto.CuisineDetail;
+import yy.eat.dto.Foods;
+import yy.eat.dto.PageData;
+import yy.eat.dto.ResponseData;
 import yy.eat.service.CuisineDetailService;
+import yy.eat.service.FoodsService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -26,6 +31,9 @@ public class CuisineController {
     @Autowired
     private CuisineDetailService cuisineDetailService;
 
+    @Autowired
+    private FoodsService foodsService;
+
     @RequestMapping("/selectCuisineDetail")
     public ModelAndView selectCuisineDetail(HttpServletRequest request){
         List<CuisineDetail> cuisineDetailList=cuisineDetailService.selectCuisineDetail();
@@ -37,12 +45,19 @@ public class CuisineController {
     }
 
     @RequestMapping("/selectMenu")
-    public ModelAndView selectMenu(CuisineDetail cuisineDetail){
+    public ModelAndView selectMenu(CuisineDetail cuisineDetail,
+                                   @RequestParam(name = "currentPage",required = false, defaultValue = "1") int currentPage,
+                                   @RequestParam(name = "pageSize", required = false, defaultValue = "3") int pageSize){
         List<CuisineDetail> menulList=cuisineDetailService.selectMenu(cuisineDetail);
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("menulList",menulList);
-
-
+        PageData<CuisineDetail> pageData=new PageData<CuisineDetail>();
+        pageData.setCurrentPage(currentPage).setPageSize(pageSize);
+        pageData.setEntity(cuisineDetail);
+        List<Foods> foodsList=foodsService.selectFoods(pageData);
+        int count=foodsService.foodsCount(pageData);
+        ResponseData<Foods> foodData=new ResponseData<Foods>().setRows(foodsList).setTotal(count).setPage(currentPage).setPageSize(pageSize).setCuisineDetail(cuisineDetail);
+        modelAndView.addObject("foodData",foodData);
         modelAndView.setViewName("menu");
         return modelAndView;
     }

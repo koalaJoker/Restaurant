@@ -11,7 +11,7 @@
             <id column="DETAIL_ID" property="detailId"></id>
             <result column="CUISINE_ID" property="cuisineId"></result>
             <result column="DETAIL_CUISINE_NAME" property="detailCuisineName"></result>
-            <collection property="foodList" ofType="yy.eat.dto.Food">
+            <collection property="foodList" ofType="yy.eat.dto.Foods">
                 <id column="FOOD_ID" property="foodId"></id>
                 <result column="FOOD_NAME" property="foodName"></result>
             </collection>

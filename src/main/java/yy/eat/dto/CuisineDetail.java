@@ -23,7 +23,9 @@ public class CuisineDetail {
 
     private List<CuisineDetail> detailList;
 
-    private List<Food> foodList;
+    private List<Foods> foodList;
+
+    private String foodName;
 
     public Long getDetailId() {
         return detailId;
@@ -65,11 +67,19 @@ public class CuisineDetail {
         this.detailList = detailList;
     }
 
-    public List<Food> getFoodList() {
+    public List<Foods> getFoodList() {
         return foodList;
     }
 
-    public void setFoodList(List<Food> foodList) {
+    public void setFoodList(List<Foods> foodList) {
         this.foodList = foodList;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 }
