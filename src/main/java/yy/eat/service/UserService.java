@@ -2,7 +2,7 @@
  * Copyright (C) HAND Enterprise Solutions Company Ltd.
  * All Rights Reserved
  */
-package yy.eat.mapper;
+package yy.eat.service;
 
 import yy.eat.dto.User;
 
@@ -10,10 +10,9 @@ import yy.eat.dto.User;
  * @author LinKaiLong
  * @Title:
  * @Description: (描述此类的功能)
- * @date 2017-03-31 20:27
+ * @date 2017-04-05 19:36
  */
-public interface UserMapper {
-	User findUserByPhone(String phone);
+public interface UserService {
 	void addUser(User user);
 }
 

@@ -4,4 +4,35 @@
     <select id="findUserByPhone" parameterType="string" resultType="yy.eat.dto.User">
     SELECT * FROM res_user WHERE user_phone=#{phone}
     </select>
+    <insert id="addUser" parameterType="yy.eat.dto.User">
+        INSERT INTO res_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="name!=null">
+            USER_NAME,
+        </if>
+        <if test="password!=null">
+            USER_PASSWORD,
+        </if>
+        <if test="phone!=null">
+            USER_PHONE,
+        </if>
+        <if test="sex!=null">
+            USER_SEX,
+        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="name!=null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password!=null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone!=null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex!=null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
 </mapper>

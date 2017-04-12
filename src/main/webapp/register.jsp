@@ -56,26 +56,25 @@
     </div>
 </div>
 <!-- //breadcrumbs -->
+<span id="hideCode"></span>
 <!-- register -->
 <div class="register">
     <div class="container">
         <h2>注册</h2>
         <div class="login-form-grids">
+            <form  onsubmit="return check()" action="/regiest.action" method="post">
             <h5>个人信息</h5>
-            <form action="#" method="post">
-                <input type="text" placeholder="姓名：" required=" " >
+                <input type="text" name="name" placeholder="姓名：" required="required " >
                 <div style="margin-top: 10px">
                     男：<input type="radio" name="sex" value="男">&nbsp;&nbsp;&nbsp;女：<input type="radio" name="sex" value="女"></div>
-            </form>
             <h6>登陆信息</h6>
-            <form action="#" method="post">
-                <input type="text" id="phone" placeholder="请输入手机号" required=" " >
+                <input type="text" id="phone" name="phone" placeholder="请输入手机号" required=" " >
                 <div style="margin-top: 10px" >
                     <input type="text" name="" style="width: 300px" id="code"  placeholder="请输入验证码"  required="">
-                    <span id="dyMobileButton" class="btn btn-success" style="margin-left: 30px">获取</span></a>
+                    <span id="dyMobileButton" onclick="sendMobileCode()" class="btn btn-success" style="margin-left: 30px">获取</span></a>
                 </div>
-                <input type="password" placeholder="请输入密码" required=" " >
-                <input type="password" placeholder="确认密码" required=" " >
+                <input type="password" name="password" id="password" placeholder="请输入密码" required=" " >
+                <input type="password" id="password2"  placeholder="确认密码" required=" " >
                 <div class="register-check-box">
                     <div class="check">
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
@@ -206,38 +205,61 @@
         });
 
     });
-    $(function(){
-        $("#dyMobileButton").click(function(){
-            var phone=$("#phone").val();
-            $.ajax({
-                url: "/sendSms.action?phone="+phone,
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-                    alert(data);
-                }
-          });
-        });
-    })
-</script>
-<script type="text/javascript">
-    //创建AJAX异步对象
-    function createAJAX(){
-        var ajax = null;
-        try{
-            //如果IE5=IE12的话
-            ajax = new ActiveXObject("microsoft.xmlhttp");
-        }catch(e1){
-            try{
-                //如果是非IE的话
-                ajax = new XMLHttpRequest();
-            }catch(e2){
-                alert("你的浏览器中不支持异步对象，请换浏览器");
-            }
+    //用于接收验证码
+    var clock='';
+    var nums=60;
+    var btn= $("#dyMobileButton");
+    function doLoop(){
+        nums--;
+        if(nums>0){
+            btn.html(nums+'秒');
+        }else{
+            clearInterval(clock); //清除js定时器
+            $("#dyMobileButton").attr("onclick","sendMobileCode()");
+            btn.html('获取') ;
+            nums = 60; //重置时间
         }
-        return ajax;
+
     }
+    function sendMobileCode() {
+        var phone=$("#phone").val();
+        //判断手机号码是否正确
+        if(!(/^1[34578]\d{9}$/.test(phone))){
+            alert("手机号码有误，请重填");
+            return;
+        }
+        $("#dyMobileButton").removeAttr("onclick");
+        clock=setInterval(doLoop,1000);
+        $.ajax({
+            url: "/sendSms.action?phone="+phone+"code=?",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                alert(data);
+                if (data=="false"){
+                    alert("已经存在手机号！")
+                }
+                $("#hideCode").text(data);
+            }
+        });
+    }
+    //提交之前检测
+    function check(){
+        var password1=$("#password").val();
+        var password2=$("#password2").val();
+
+        if(password2!=password1){
+            alert("两次密码输入不一致！");
+            //$("#spanid").text(" 两次密码输入不一致") ;
+            return false;
+        }
+        else{
+            return true;
+        }
+
+    }
+
 </script>
 <!-- //main slider-banner -->
 
