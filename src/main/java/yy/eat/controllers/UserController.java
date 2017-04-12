@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import yy.eat.dto.SmsData;
 import yy.eat.dto.User;
+import yy.eat.mapper.UserMapper;
 import yy.eat.service.SmsService;
 import yy.eat.service.UserService;
 
@@ -28,6 +30,8 @@ public class UserController {
 	private SmsService smsService;
     @Autowired
 	private UserService userService;
+	@Autowired
+	private UserMapper userMapper;
 	@RequestMapping("/sendSms")
 	@ResponseBody
 	public String sendSMS(HttpServletRequest request) {
@@ -36,14 +40,17 @@ public class UserController {
 		sms.setPhone(request.getParameter("phone"));
 		sms.setCode(String.valueOf(radomInt));
 		Boolean falg=smsService.sendSMS(sms);
-		//if (Boolean.TRUE==falg)return sms.getCode();
+		if (Boolean.TRUE==falg)return sms.getCode();
         return Boolean.FALSE.toString();
 	}
     @RequestMapping("/regiest")
 	@ResponseBody
-	public void regiestUser(User user){
+	public ModelAndView regiestUser(User user){
 		System.out.println(user.getPhone());
 		userService.addUser(user);
+		ModelAndView modelAndView =new ModelAndView();
+		modelAndView.setViewName("login");
+		return modelAndView;
 	}
 }
 

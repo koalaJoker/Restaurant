@@ -231,12 +231,12 @@
         $("#dyMobileButton").removeAttr("onclick");
         clock=setInterval(doLoop,1000);
         $.ajax({
-            url: "/sendSms.action?phone="+phone+"code=?",
+            url: "/sendSms.action?phone="+phone,
             type: "POST",
             dataType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                alert(data);
+                //alert(data);
                 if (data=="false"){
                     alert("已经存在手机号！")
                 }

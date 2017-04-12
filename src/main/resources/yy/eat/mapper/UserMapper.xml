@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yy.eat.mapper.UserMapper">
-    <select id="findUserByPhone" parameterType="string" resultType="yy.eat.dto.User">
+    <resultMap id="userResultMap" type="yy.eat.dto.User">
+        <id column="USER_ID" property="id"></id>
+        <result column="USER_NAME" property="name"></result>
+        <result column="USER_PASSWORD" property="password"></result>
+        <result column="USER_SEX" property="sex"></result>
+        <result column="USER_PHONE" property="phone"></result>
+    </resultMap>
+    <select id="findUserByPhone" parameterType="string" resultMap="userResultMap">
     SELECT * FROM res_user WHERE user_phone=#{phone}
     </select>
     <insert id="addUser" parameterType="yy.eat.dto.User">

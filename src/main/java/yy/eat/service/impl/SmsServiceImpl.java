@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import yy.eat.dto.SmsData;
 import yy.eat.mapper.UserMapper;
 import yy.eat.service.SmsService;
+import yy.eat.utils.RestTest;
 
 /**
  * @author LinKaiLong
@@ -26,11 +27,12 @@ public class SmsServiceImpl implements SmsService{
 	final  String templateId = "28502";
 	@Override
 	public Boolean sendSMS(SmsData smsData) {
+		System.out.println("findUserByPhone"+userMapper.findUserByPhone(smsData.getPhone()));
 		if (null==userMapper.findUserByPhone(smsData.getPhone())) {
-			//RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),smsData.getCode());
+			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),smsData.getCode());
 		    return Boolean.TRUE;
 		}
-		return false;
+		return Boolean.FALSE;
 	}
 }
 
