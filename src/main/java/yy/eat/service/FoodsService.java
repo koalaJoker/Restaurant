@@ -20,4 +20,6 @@ public interface FoodsService {
     List<Foods> selectFoods(PageData<CuisineDetail> pageData);
 
     int foodsCount(PageData<CuisineDetail> pageData);
+
+    Foods selectFoodById(Foods foods);
 }

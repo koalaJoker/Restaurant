@@ -5,28 +5,33 @@
         <id column="FOOD_ID" property="foodId"></id>
         <result column="FOOD_NAME" property="foodName"></result>
         <result column="FOOD_IMAGE" property="foodImage"></result>
-        <result column="RECOMMEND_RATE" property="recommentRate"></result>
+        <result column="RECOMMEND_RATE" property="recommendRate"></result>
         <result column="ORIGINAL_PRICE" property="originalPrice"></result>
         <result column="DISCOUNT_PRICE" property="discountPrice"></result>
         <result column="SALE_VOLUME" property="saleVolume"></result>
         <result column="DESCRIPTION" property="description"></result>
         <result column="DETAIL_ID" property="detailId"></result>
+        <result column="PARENT_CUISINE_ID" property="parentCuisineId"></result>
     </resultMap>
 
     <select id="selectFoods" parameterType="yy.eat.dto.PageData" resultMap="baseResultMap">
         SELECT
-        rf.*
+        *
         FROM
-        res_cuisine_detail rcd1,
-        res_cuisine_detail rcd2,
-        res_food rf
+        (
+        SELECT
+        *
+        FROM
+        res_cuisine_detail rcd
         WHERE
         FIND_IN_SET(
-        rcd1.DETAIL_ID,
+        rcd.DETAIL_ID,
         getChildList (#{entity.detailId})
         )
-        AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
-        AND rcd2.DETAIL_ID = rf.DETAIL_ID
+        ) rcd,
+        res_food rf
+        WHERE
+        rcd.detail_id = rf.detail_id
         <if test="entity.foodName!=null ">
             AND rf.FOOD_Name  like CONCAT('%', #{entity.foodName}, '%')
         </if>
@@ -51,5 +56,17 @@
             AND rf.FOOD_Name  like CONCAT('%', #{entity.foodName}, '%')
         </if>
 
+    </select>
+
+    <select id="selectFoodById" parameterType="yy.eat.dto.Foods" resultMap="baseResultMap">
+        SELECT
+            *
+        FROM
+            res_food RF
+        WHERE
+            1=1
+        <if test="foodId!=null">
+           AND RF.FOOD_ID = #{foodId}
+        </if>
     </select>
 </mapper>

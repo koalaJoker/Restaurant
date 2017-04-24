@@ -19,7 +19,6 @@
     <!-- //for-mobile-apps -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.css">
     <!-- font-awesome icons -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
@@ -66,10 +65,10 @@
                     <c:if test="${menulList!=null}">
                         <c:forEach var="menu" items="${menulList}">
                             <c:forEach var="cuisine" items="${menu.detailList}">
-                                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${cuisine.detailCuisineName}</a></li>
+                                <li><a href="selectMenu.action?parentCuisineId=${menu.detailId}&detailId=${cuisine.detailId}"><i class="fa fa-arrow-right" aria-hidden="true"></i>${cuisine.detailCuisineName}</a></li>
                                 <ul>
                                   <c:forEach var="food" items="${cuisine.foodList}">
-                                      <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${food.foodName}</a></li>
+                                      <li><a href="selectFoodById.action?foodId=${food.foodId}"><i class="fa fa-arrow-right" aria-hidden="true"></i>${food.foodName}</a></li>
                                   </c:forEach>
                               </ul>
                             </c:forEach>
@@ -116,34 +115,22 @@
                          <div class="hover14 column">
                              <div class="agile_top_brand_left_grid">
                                  <div class="agile_top_brand_left_grid_pos">
-                                     <img src="images/${food.foodImage}" alt=" " class="img-responsive">
+                                     <img src="images/offer.png" alt=" " class="img-responsive">
                                  </div>
-                                 <div class="agile_top_brand_left_grid1">
-                                     <figure>
+                                 <div class="agile_top_brand_left_grid1" >
+
                                          <div class="snipcart-item block">
                                              <div class="snipcart-thumb">
-                                                 <a href="single.html"><img title=" " alt=" " src="images/pf4.png"></a>
+                                                 <a href="selectFoodById.action?foodId=${food.foodId}"><img height="190px" width="170px" title=" " alt=" " src="images/${food.foodImage}"></a>
                                                  <p>${food.foodName}</p>
                                                  <h4>$${food.discountPrice}<span>$${food.originalPrice}</span></h4>
                                              </div>
                                              <div class="snipcart-details top_brand_home_details">
-                                                 <form action="#" method="post">
-                                                     <fieldset>
-                                                         <input type="hidden" name="cmd" value="_cart">
-                                                         <input type="hidden" name="add" value="1">
-                                                         <input type="hidden" name="business" value=" ">
-                                                         <input type="hidden" name="item_name" value="${food.foodName}l">
-                                                         <input type="hidden" name="amount" value="${food.discountPrice}">
-                                                         <input type="hidden" name="discount_amount" value="1.00">
-                                                         <input type="hidden" name="currency_code" value="RMB">
-                                                         <input type="hidden" name="return" value=" ">
-                                                         <input type="hidden" name="cancel_return" value=" ">
-                                                         <input type="submit" name="submit" value="Add to cart" class="button">
-                                                     </fieldset>
+                                                         <input type="submit" id="submit" value="Add to cart" onclick="addCart('cart${j.count}',${food.foodId})" class="button">
+                                                        <div style="position: absolute; z-index:99;color:#fe9126"><span id="cart${j.count}"></span></div>
                                                  </form>
                                              </div>
                                          </div>
-                                     </figure>
                                  </div>
                              </div>
                          </div>
@@ -163,7 +150,7 @@
                         </a>
                     </c:if>
                     <c:if test="${foodData.page!=1}">
-                        <a  href="selectMenu.action?detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=1" aria-label="Previous" >
+                        <a  href="selectMenu.action?parentCuisineId=${foodData.cuisineDetail.parentCuisineId}&detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=1" aria-label="Previous" >
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </c:if>
@@ -174,7 +161,7 @@
                                 <li class="active"><a href="#">${i}</a></li>
                             </c:if>
                             <c:if test="${i!=foodData.page}">
-                                <li ><a href="selectMenu.action?detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=${i}">${i}</a></li>
+                                <li ><a href="selectMenu.action?parentCuisineId=${foodData.cuisineDetail.parentCuisineId}&detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=${i}">${i}</a></li>
                             </c:if>
                         </c:forEach>
                     <li>
@@ -184,14 +171,13 @@
                             </a>
                         </c:if>
                         <c:if test="${foodData.page!=foodData.count}">
-                            <a href="selectMenu.action?detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=${foodData.count}" aria-label="Next">
+                            <a href="selectMenu.action?parentCuisineId=${foodData.cuisineDetail.parentCuisineId}&detailId=${foodData.cuisineDetail.detailId}&&foodName=${foodData.cuisineDetail.foodName}&&currentPage=${foodData.count}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </c:if>
                     </li>
                 </ul>
             </nav>
-
         <div class="clearfix"> </div>
     </div>
 </div>
@@ -289,17 +275,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
-<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '#'
-    });
 
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
-    }
-</script>
 <!-- main slider-banner -->
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
@@ -318,6 +294,29 @@
 $(function(){
 $("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
 })
+function addCart(id,foodId) {
+    $("#"+id).text("已加入购物车!").show(300).delay(1000).hide(300);
+    //加入购物车
+    $.ajax({
+        url:"addToCart.action",
+        dataType:"json",
+        type:"POST",
+        data:
+            {"foodId":foodId,"userId":1,quantity:1},
+        success:function (datas) {
+
+        }
+
+    })
+
+}
 </script>
+    <script type="text/javascript">
+        $(function(){
+            $("#dianji").click(function(){
+                $("#disappare").show().delay(3000).hide(300);
+            });
+        })
+    </script>
 </body>
 </html>

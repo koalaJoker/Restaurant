@@ -35,4 +35,9 @@ public class FoodsServiceImpl implements FoodsService {
     public int foodsCount(PageData<CuisineDetail> pageData) {
         return foodsMapper.foodsCount(pageData);
     }
+
+    @Override
+    public Foods selectFoodById(Foods foods) {
+        return foodsMapper.selectFoodById(foods);
+    }
 }

@@ -18,4 +18,5 @@ public interface CuisineDetailMapper {
     List<CuisineDetail> selectCuisineDetail();
 
     List<CuisineDetail> selectMenu(CuisineDetail cuisineDetail);
+
 }

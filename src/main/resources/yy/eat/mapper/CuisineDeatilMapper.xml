@@ -54,9 +54,27 @@
         WHERE
             FIND_IN_SET(
                 rcd1.DETAIL_ID,
-                getChildList (#{detailId})
+                getChildList (#{parentCuisineId})
             )
         AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
         AND rcd2.DETAIL_ID = rf.DETAIL_ID
+    </select>
+
+    <select id="selectMenuFood">
+        SELECT
+            rcd.DETAIL_ID,
+            rcd.DETAIL_CUISINE_NAME,
+            rcd.CUISINE_ID,
+            rcd.PARENT_CUISINE_ID,
+            rf.FOOD_ID,
+            rf.FOOD_NAME
+        FROM
+            res_cuisine_detail rcd,
+            res_food rf
+        WHERE
+            rcd.DETAIL_ID = rf.DETAIL_ID
+        <if test="detailId!=null ">
+            AND rcd.DETAIL_ID = #{detailId}
+        </if>
     </select>
 </mapper>

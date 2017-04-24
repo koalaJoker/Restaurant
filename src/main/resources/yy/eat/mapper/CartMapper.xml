@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yy.eat.mapper.CartMapper">
+    <resultMap id="ResultMap" type="yy.eat.dto.Cart">
+        <id column="CART_ID" property="cartId"></id>
+        <result column="FOOD_ID" property="foodId"></result>
+        <result column="QUANTITY" property="quantity"></result>
+        <result column="USER_ID" property="userId"></result>
+        <association property="foods" javaType="Foods">
+            <id column="FOOD_ID" property="foodId"></id>
+            <result column="FOOD_NAME" property="foodName"></result>
+            <result column="FOOD_IMAGE" property="foodImage"></result>
+            <result column="DISCOUNT_PRICE" property="discountPrice"></result>
+        </association>
+    </resultMap>
+
+    <insert id="addCart" parameterType="yy.eat.dto.Cart">
+        INSERT INTO res_cart (FOOD_ID, QUANTITY, USER_ID)
+        VALUES
+        (#{foodId},#{quantity},#{userId})
+    </insert>
+
+    <select id="selectFoodUnique" parameterType="yy.eat.dto.Cart" resultType="java.lang.Long">
+        SELECT
+            count(1)
+        FROM
+            res_cart c
+        WHERE
+            c.USER_ID = #{userId}
+        AND c.FOOD_ID = #{foodId}
+    </select>
+
+    <update id="updateQuantity" parameterType="yy.eat.dto.Cart">
+        UPDATE res_cart
+        SET QUANTITY = QUANTITY + #{quantity}
+        WHERE
+            FOOD_ID = #{foodId}
+        AND USER_ID = #{userId}
+    </update>
+
+    <select id="selectCart" parameterType="yy.eat.dto.Cart" resultMap="ResultMap">
+        SELECT
+            c.*,
+            f.FOOD_ID,
+            f.FOOD_NAME,
+            f.FOOD_IMAGE,
+            f.DISCOUNT_PRICE
+        FROM
+            res_cart c,res_food f
+        WHERE
+        c.FOOD_ID=f.FOOD_ID
+        AND
+            USER_ID = #{userId}
+    </select>
+
+    <delete id="deleteCart"  parameterType="yy.eat.dto.Cart">
+        DELETE
+        FROM
+            res_cart
+        WHERE
+            CART_ID = #{cartId}
+    </delete>
+</mapper>

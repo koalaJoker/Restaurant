@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import yy.eat.dto.CuisineDetail;
-import yy.eat.dto.Foods;
-import yy.eat.dto.PageData;
-import yy.eat.dto.ResponseData;
+import yy.eat.dto.*;
 import yy.eat.service.CuisineDetailService;
 import yy.eat.service.FoodsService;
 
@@ -47,7 +44,7 @@ public class CuisineController {
     @RequestMapping("/selectMenu")
     public ModelAndView selectMenu(CuisineDetail cuisineDetail,
                                    @RequestParam(name = "currentPage",required = false, defaultValue = "1") int currentPage,
-                                   @RequestParam(name = "pageSize", required = false, defaultValue = "3") int pageSize){
+                                   @RequestParam(name = "pageSize", required = false, defaultValue = "9") int pageSize){
         List<CuisineDetail> menulList=cuisineDetailService.selectMenu(cuisineDetail);
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("menulList",menulList);
@@ -62,4 +59,12 @@ public class CuisineController {
         return modelAndView;
     }
 
+    @RequestMapping("/selectFoodById")
+    public ModelAndView selectFoodById(Foods food){
+        Foods foods=foodsService.selectFoodById(food);
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject("foods",foods);
+        modelAndView.setViewName("food");
+        return modelAndView;
+    }
 }

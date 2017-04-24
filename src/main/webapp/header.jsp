@@ -12,7 +12,8 @@
 <head>
     <script type="text/javascript">
         <c:if test="${cuisineDetailList==null}">
-        <jsp:forward page="selectCuisineDetail.action"></jsp:forward>
+        <jsp:include page="selectCuisineDetail.action"></jsp:include>
+
         </c:if>
     </script>
 </head>
@@ -24,9 +25,9 @@
         </div>
         <div class="agile-login">
             <ul>
-                <li><a href="register.jsp">注册</a></li>
-                <li><a href="login.jsp">登录</a></li>
-                <li><a href="contact.html">Help</a></li>
+                <li><a href="register.jsp">注 册</a></li>
+                <li><a href="login.jsp">登 录</a></li>
+                <li><a href="contact.html">帮 助</a></li>
 
             </ul>
         </div>
@@ -34,8 +35,14 @@
             <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                <a href="/queryCart.action?userId=1" style="color: white">购物车<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+
             </form>
+            <script>
+                $("#cartyy").click(function(){
+                    location.href="cart/query.action";
+                })
+            </script>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -94,7 +101,7 @@
                                                 <ul class="multi-column-dropdown">
                                                     <h6>All ${cuisine.detailCuisineName}</h6>
                                                     <c:forEach var="list" items="${cuisine.detailList}">
-                                                        <li><a href='selectMenu.action?detailId=${list.detailId}'>${list.detailCuisineName}</a></li>
+                                                        <li><a href='selectMenu.action?parentCuisineId=${list.detailId}&detailId=${list.detailId}'>${list.detailCuisineName}</a></li>
                                                     </c:forEach>
                                                 </ul>
                                             </div>

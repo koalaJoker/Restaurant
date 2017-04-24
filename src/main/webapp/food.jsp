@@ -56,38 +56,28 @@
 </div>
 <!-- //breadcrumbs -->
 <div class="products">
-    <div class="container">
-        <div class="agileinfo_single">
-
-            <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="images/si1.jpg" alt=" " class="img-responsive">
+    <div class="container" >
+        <div class="agileinfo_single" >
+            <div class="col-md-4 agileinfo_single_left" >
+                <img id="example" src="images/${foods.foodImage}" alt=" " class="img-responsive" width="320" height="300">
             </div>
             <div class="col-md-8 agileinfo_single_right">
-                <h2>KHARAMORRA Khakra - Hariyali</h2>
-                <div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked="">
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
+                <h2>${foods.foodName}</h2>
+                <div class="rating1"><span>推荐指数:</span>
+						<span class="starRating" >
+              <c:forEach varStatus="i" begin="1" end="${foods.recommendRate}">
+							<input id="rating5" type="radio" name="rating" >
+							<label for="rating5">i</label>
+              </c:forEach>
 						</span>
                 </div>
                 <div class="w3agile_description">
-                    <h4>Description :</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.</p>
+                    <h4>介绍 :</h4>
+                    <p>${foods.description}</p>
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+                        <h4 class="m-sing">$${foods.discountPrice} <span>$${foods.originalPrice}</span></h4>
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
                         <form action="#" method="post">
@@ -95,14 +85,18 @@
                                 <input type="hidden" name="cmd" value="_cart">
                                 <input type="hidden" name="add" value="1">
                                 <input type="hidden" name="business" value=" ">
-                                <input type="hidden" name="item_name" value="pulao basmati rice">
-                                <input type="hidden" name="amount" value="21.00">
-                                <input type="hidden" name="discount_amount" value="1.00">
+                                <input type="hidden" name="item_name" value="${foods.foodName}">
+                                <input type="hidden" name="amount" value="${foods.originalPrice}">
+                                <input type="hidden" name="discount_amounet" value=''>
                                 <input type="hidden" name="currency_code" value="USD">
                                 <input type="hidden" name="return" value=" ">
                                 <input type="hidden" name="cancel_return" value=" ">
                                 <input type="submit" name="submit" value="Add to cart" class="button">
                             </fieldset>
+                            <script>
+                                var put=${foods.originalPrice}-${foods.discountPrice};
+                                $("[name='discount_amounet']").val(put);
+                            </script>
                         </form>
                     </div>
                 </div>
@@ -389,17 +383,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
-<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '#'
-    });
 
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
-    }
-</script>
 <!-- main slider-banner -->
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">

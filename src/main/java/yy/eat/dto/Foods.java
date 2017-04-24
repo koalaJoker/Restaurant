@@ -17,7 +17,7 @@ public class Foods {
 
     private String foodImage;
 
-    private Long recommentRate;
+    private Long recommendRate;
 
     private Long originalPrice;
 
@@ -28,6 +28,8 @@ public class Foods {
     private String description;
 
     private Long detailId;
+
+    private Long parentCuisineId;
 
     public Long getFoodId() {
         return foodId;
@@ -53,12 +55,8 @@ public class Foods {
         this.foodImage = foodImage;
     }
 
-    public Long getRecommentRate() {
-        return recommentRate;
-    }
-
-    public void setRecommentRate(Long recommentRate) {
-        this.recommentRate = recommentRate;
+    public Long getRecommendRate() {
+        return recommendRate;
     }
 
     public Long getOriginalPrice() {
@@ -99,5 +97,17 @@ public class Foods {
 
     public void setDetailId(Long detailId) {
         this.detailId = detailId;
+    }
+
+    public void setRecommendRate(Long recommendRate) {
+        this.recommendRate = recommendRate;
+    }
+
+    public Long getParentCuisineId() {
+        return parentCuisineId;
+    }
+
+    public void setParentCuisineId(Long parentCuisineId) {
+        this.parentCuisineId = parentCuisineId;
     }
 }

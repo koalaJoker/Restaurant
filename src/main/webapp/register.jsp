@@ -48,7 +48,7 @@
 <!-- //navigation -->
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
-    <div class="container">
+    <div class="container" id="scroll">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
             <li class="active">Register Page</li>
@@ -182,17 +182,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
-<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '#'
-    });
 
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
-    }
-</script>
 <!-- main slider-banner -->
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
@@ -262,6 +252,10 @@
 
 </script>
 <!-- //main slider-banner -->
-
+<script>
+    $(function(){
+        $("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
+    })
+</script>
 </body>
 </html>

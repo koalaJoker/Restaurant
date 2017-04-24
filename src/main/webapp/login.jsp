@@ -47,7 +47,7 @@
 <!-- //navigation -->
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
-    <div class="container">
+    <div class="container" id="scroll">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
             <li class="active">Login Page</li>
@@ -58,20 +58,21 @@
 <!-- login -->
 <div class="login">
     <div class="container">
-        <h2>Login Form</h2>
+        <h2>登 录</h2>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
             <form>
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
+                <input type="email" placeholder="手机号" required=" " >
+                <input type="password" placeholder="密码" required=" " >
                 <div class="forgot">
-                    <a href="#">Forgot Password?</a>
+                    <a href="#" style="color: #d3dbc1">忘记密码?</a>
+                    <div class="pull-right" style="margin-right: 10px"> <input type="checkbox" />记住密码</div>
                 </div>
-                <input type="submit" value="Login">
+                <input type="submit" value="登  录">
             </form>
         </div>
         <h4>For New People</h4>
-        <p><a href="registered.html">Register Here</a> (Or) go back to <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        <p><a href="registered.html">注 册</a> (Or) go back to <a href="index.html">主 页<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
     </div>
 </div>
 <!-- //login -->
@@ -168,17 +169,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
-<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '#'
-    });
 
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
-    }
-</script>
 <!-- main slider-banner -->
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
@@ -193,6 +184,10 @@
     });
 </script>
 <!-- //main slider-banner -->
-
+<script>
+    $(function(){
+        $("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
+    })
+</script>
 </body>
 </html>
