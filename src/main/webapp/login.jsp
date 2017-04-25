@@ -62,7 +62,7 @@
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
             <form>
-                <input type="email" placeholder="手机号" required=" " >
+                <input type="phone" placeholder="手机号" required=" " class="k-textbox">
                 <input type="password" placeholder="密码" required=" " >
                 <div class="forgot">
                     <a href="#" style="color: #d3dbc1">忘记密码?</a>
