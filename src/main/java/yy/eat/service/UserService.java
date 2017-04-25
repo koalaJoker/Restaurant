@@ -14,5 +14,6 @@ import yy.eat.dto.User;
  */
 public interface UserService {
 	void addUser(User user);
+	User findUserByPhone(String phone);
 }
 

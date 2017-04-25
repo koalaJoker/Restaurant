@@ -25,5 +25,10 @@ public class UserServiceImpl implements UserService {
 	public void addUser(User user) {
 		userMapper.addUser(user);
 	}
+
+	@Override
+	public User findUserByPhone(String phone) {
+		return userMapper.findUserByPhone(phone);
+	}
 }
 

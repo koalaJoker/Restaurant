@@ -16,6 +16,7 @@ import yy.eat.service.SmsService;
 import yy.eat.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Random;
 
 /**
@@ -47,11 +48,33 @@ public class UserController {
     @RequestMapping("/regiest")
 	@ResponseBody
 	public ModelAndView regiestUser(User user){
-		System.out.println(user.getPhone());
 		userService.addUser(user);
 		ModelAndView modelAndView =new ModelAndView();
 		modelAndView.setViewName("login");
 		return modelAndView;
+	}
+	@RequestMapping("/login")
+	@ResponseBody
+	public ModelAndView loginUser(User user,HttpSession httpSession){
+		ModelAndView modelAndView=new ModelAndView();
+		User findUser=userService.findUserByPhone(user.getPhone());
+		if (null==findUser){
+			modelAndView.setViewName("login");
+			modelAndView.addObject("errorTip","该用户不存在!");
+			return modelAndView;
+		}
+		if (findUser.getPassword().equals(user.getPassword())){
+			//将登陆信息存入session中
+			httpSession.setAttribute("userId",findUser.getId());
+			httpSession.setAttribute("userName",findUser.getName());
+			modelAndView.setViewName("index");
+			return modelAndView;
+		}else {
+			modelAndView.setViewName("login");
+			modelAndView.addObject("errorTip","用户名或密码错误!");
+			modelAndView.addObject("phone",user.getPhone());
+			return modelAndView;
+		}
 	}
 }
 
