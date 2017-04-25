@@ -57,6 +57,7 @@
 </div>
 <!-- //breadcrumbs -->
 <span id="hideCode"></span>
+<span id="hidePhone"></span>
 <!-- register -->
 <div class="register">
     <div class="container">
@@ -228,9 +229,11 @@
             success: function (data) {
                 //alert(data);
                 if (data=="false"){
-                    alert("已经存在手机号！")
+                    alert("已经存在手机号！");
+                    return;
                 }
                 $("#hideCode").text(data);
+                $("#hidePhone").text(phone);
             }
         });
     }
@@ -238,16 +241,24 @@
     function check(){
         var password1=$("#password").val();
         var password2=$("#password2").val();
-
+        var phone=$("#phone").val();
+        var hidePhone=$("#hidePhone").val();
+        var hideCode=$("#hideCode").val();
+        var code=$("#code").val();
         if(password2!=password1){
             alert("两次密码输入不一致！");
             //$("#spanid").text(" 两次密码输入不一致") ;
             return false;
         }
-        else{
-            return true;
+        if(hidePhone!=phone){
+            alert("手机号与接收验证码手机号不符！");
+            return false;
         }
-
+        if(hideCode!=code){
+            alert("验证码错误！");
+            return false;
+        }
+        return true;
     }
 
 </script>
