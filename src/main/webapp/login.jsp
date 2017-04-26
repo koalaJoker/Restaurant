@@ -61,14 +61,15 @@
         <h2>登 录</h2>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form>
-                <input type="phone" placeholder="手机号" required=" " class="k-textbox">
-                <input type="password" placeholder="密码" required=" " >
+            <form action="/login.action" method="post">
+                <input type="phone" id="phone" name="phone" placeholder="手机号" required=" " class="k-textbox">
+                <input type="password"  id="password" name="password" placeholder="密码" required=" " >
                 <div class="forgot">
                     <a href="#" style="color: #d3dbc1">忘记密码?</a>
                     <div class="pull-right" style="margin-right: 10px"> <input type="checkbox" />记住密码</div>
                 </div>
                 <input type="submit" value="登  录">
+                <span>${errorTip}</span>
             </form>
         </div>
         <h4>For New People</h4>

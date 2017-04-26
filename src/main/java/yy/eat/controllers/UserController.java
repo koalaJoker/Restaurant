@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yy.eat.dto.SmsData;
 import yy.eat.dto.User;
-import yy.eat.mapper.UserMapper;
 import yy.eat.service.SmsService;
 import yy.eat.service.UserService;
 
@@ -31,8 +30,6 @@ public class UserController {
 	private SmsService smsService;
     @Autowired
 	private UserService userService;
-	@Autowired
-	private UserMapper userMapper;
 	@RequestMapping("/sendSms")
 	@ResponseBody
 	public String sendSMS(HttpServletRequest request) {
@@ -58,6 +55,7 @@ public class UserController {
 	public ModelAndView loginUser(User user,HttpSession httpSession){
 		ModelAndView modelAndView=new ModelAndView();
 		User findUser=userService.findUserByPhone(user.getPhone());
+		System.out.println("get phone and password="+user.getPhone()+"  "+user.getPassword());
 		if (null==findUser){
 			modelAndView.setViewName("login");
 			modelAndView.addObject("errorTip","该用户不存在!");
