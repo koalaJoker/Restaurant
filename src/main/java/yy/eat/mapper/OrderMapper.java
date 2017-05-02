@@ -1,5 +1,6 @@
 package yy.eat.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import yy.eat.dto.Order;
 
 import java.util.List;
@@ -11,5 +12,6 @@ import java.util.List;
  * @date 2017-05-02 19:38
  */
 public interface OrderMapper {
-	List<Order> getOrderByUserId(int id);
+
+	List<Order> getOrderByUserId(@Param("userId") Long  userId);
 }

@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yy.eat.mapper.OrderMapper">
+    <resultMap id="baseResultMap" type="yy.eat.dto.Order">
+        <id column="ORDER_ID" property="detailId"></id>
+        <result column="SERIAL_NUMBER" property="serialNum"></result>
+        <result column="USER_ID" property="userId"></result>
+        <result column="ADDRESS_ID" property="addressId"></result>
+        <result column="TOTAL_PRICE" property="totalPrice"></result>
+        <result column="CUSTOMER_REMARK" property="customerRemark"></result>
+        <result column="STATUS" property="status"></result>
+        <result column="CREATION_DATE" property="creationDate"></result>
+        <result column="FOOD_IMAGE" property="foodImage"></result>
+        <result column="f.FOOD_NAME" property="foodName"></result>
+        <collection property="details" ofType="yy.eat.dto.OrderDetail">
+            <id column="ORDER_DETAIL_ID" property="orderDetailid"></id>
+            <result column="ORDER_ID" property="orderId"></result>
+            <result column="FOOD_ID" property="foodId"></result>
+            <result column="COUNT" property="count"></result>
+        </collection>
+    </resultMap>
 
+    <select id="getOrderByUserId" parameterType="yy.eat.dto.Order" resultMap="baseResultMap">
+        SELECT
+            o.*, od.*, f.FOOD_IMAGE,
+            f.FOOD_NAME
+        FROM
+            res_order o,
+            res_order_detail od,
+            res_food f
+        WHERE
+            o.ORDER_ID = od.ORDER_ID
+        AND f.FOOD_ID = od.FOOD_ID
+        AND o.USER_ID=#{userId}
+    </select>
 </mapper>

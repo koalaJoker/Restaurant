@@ -30,7 +30,7 @@ public class OrderController {
        String strUserId= (String) request.getSession().getAttribute("userId");
        ModelAndView modelAndView=new ModelAndView();
        if (null!=strUserId){//已经登录
-       	int intUserId=Integer.parseInt(strUserId);
+       	long intUserId=Long.parseLong(strUserId);
        	List<Order> orders=orderMapper.getOrderByUserId(intUserId);
        	modelAndView.setViewName("");
        	modelAndView.addObject("orders",orders);

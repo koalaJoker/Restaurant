@@ -4,47 +4,46 @@
  */
 package yy.eat.dto;
 
-/**
- * @author LinKaiLong
- * @Title:
- * @Description: (描述此类的功能)
- * @date 2017-05-02 19:45
- */
+
+
 public class OrderDetail {
-	private int id;
-	private int orderId;
-	private int foodId;
-	private int count;
+	private Long orderDetailid;
 
-	public int getId() {
-		return id;
+	private Long orderId;
+
+	private Long foodId;
+
+	private Long count;
+
+	public Long getOrderDetailid() {
+		return orderDetailid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setOrderDetailid(Long orderDetailid) {
+		this.orderDetailid = orderDetailid;
 	}
 
-	public int getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 
-	public int getFoodId() {
+	public Long getFoodId() {
 		return foodId;
 	}
 
-	public void setFoodId(int foodId) {
+	public void setFoodId(Long foodId) {
 		this.foodId = foodId;
 	}
 
-	public int getCount() {
+	public Long getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(Long count) {
 		this.count = count;
 	}
 }

@@ -7,26 +7,35 @@ package yy.eat.dto;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author LinKaiLong
- * @Title:
- * @Description: (描述此类的功能)
- * @date 2017-05-02 19:39
- */
+
 public class Order {
-	private int id;
+	private Long id;
+
 	private String serialNum;
-	private String address;
+
+	private Long addressId;
+
+	private Long userId;
+
 	private double totalPrice;
+
 	private String customerRemark;
+
 	private String status;
+
 	private Date creationDate;
+
+	private String foodImage;
+
+	private String foodName;
+
     private List<OrderDetail> details;
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -38,12 +47,20 @@ public class Order {
 		this.serialNum = serialNum;
 	}
 
-	public String getAddress() {
-		return address;
+	public Long getAddressId() {
+		return addressId;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddressId(Long addressId) {
+		this.addressId = addressId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public double getTotalPrice() {
@@ -76,6 +93,22 @@ public class Order {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public String getFoodImage() {
+		return foodImage;
+	}
+
+	public void setFoodImage(String foodImage) {
+		this.foodImage = foodImage;
+	}
+
+	public String getFoodName() {
+		return foodName;
+	}
+
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
 	}
 
 	public List<OrderDetail> getDetails() {
