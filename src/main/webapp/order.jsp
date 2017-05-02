@@ -94,11 +94,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="item-info">
-                                                        <div class="item-basic-info">
+                                                        <div class="item-basic-info" style="margin-top: 30px">
                                                             <a href="#">
                                                                 <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                <p class="info-little">颜色：12#川南玛瑙
-                                                                    <br/>包装：裸装 </p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -128,11 +126,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="item-info">
-                                                        <div class="item-basic-info">
+                                                        <div class="item-basic-info" style="margin-top: 30px">
                                                             <a href="#">
                                                                 <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
-                                                                <p class="info-little">颜色分类：李清照
-                                                                    <br/>尺码：均码</p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -162,11 +158,9 @@
                                                         </a>
                                                     </div>
                                                     <div class="item-info">
-                                                        <div class="item-basic-info">
+                                                        <div class="item-basic-info" style="margin-top: 30px">
                                                             <a href="#">
                                                                 <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-                                                                <p class="info-little">颜色：12#川南玛瑙
-                                                                    <br/>包装：裸装 </p>
                                                             </a>
                                                         </div>
                                                     </div>
