@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 袁媛
-  Date: 2017/3/23
-  Time: 23:05
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -121,7 +114,7 @@
 
                                          <div class="snipcart-item block">
                                              <div class="snipcart-thumb">
-                                                 <a href="selectFoodById.action?foodId=${food.foodId}"><img height="190px" width="170px" title=" " alt=" " src="images/${food.foodImage}"></a>
+                                                 <a href="selectFoodById.action?foodId=${food.foodId}"><img height="190px" width="170px" title=" " alt=" " src="<%=request.getContextPath()%>/image.jsp?ppath=${food.foodImage}"></a>
                                                  <p>${food.foodName}</p>
                                                  <h4>$${food.discountPrice}<span>$${food.originalPrice}</span></h4>
                                              </div>
@@ -279,16 +272,6 @@
 <!-- main slider-banner -->
 <script src="js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
-
-        jQuery('#responsive').change(function(){
-            $('#responsive_wrapper').width(jQuery(this).val());
-        });
-
-    });
-</script>
 <!-- //main slider-banner -->
 <script>
 $(function(){

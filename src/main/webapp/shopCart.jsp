@@ -191,7 +191,6 @@
             setTotal(s,price);
 
            function changeCount(id,s,price,foodId,quantity) {
-               alert(111);
                s=s;
                price=price;
                var c="text_box"+s;
@@ -226,8 +225,8 @@
     <c:forEach items="${cartList}" varStatus="status" var="cart">
     <table cellpadding="0" cellspacing="0" class="gwc_tb2">
         <tr>
-            <td class="tb2_td1"><input type="checkbox" value="${cart.foods.discountPrice*cart.quantity}" name="newslist" id="newslist-${status.count}" /></td>
-            <td class="tb2_td2"><a href="#"><img src="images/${cart.foods.foodImage}"/></a></td>
+            <td class="tb2_td1"><input type="checkbox" value="${cart.foods.discountPrice*cart.quantity}" name="newslist" id="newslist-${status.count}" lang="${cart.cartId}"/></td>
+            <td class="tb2_td2"><a href="#"><img src="<%=request.getContextPath()%>/image.jsp?ppath=${cart.foods.foodImage}"/></a></td>
             <td class="tb2_td3"><a href="#">${cart.foods.foodName}</a></td>
             <td class="tb1_td4">一份</td>
             <td class="tb1_td5">
@@ -241,7 +240,6 @@
     </table>
     </c:forEach>
 </c:if>
-
     <table cellpadding="0" cellspacing="0" class="gwc_tb3">
         <tr>
             <td class="tb1_td1">&nbsp;</td>
@@ -249,10 +247,15 @@
             <td class="tb3_td1">&nbsp;</td>
             <td class="tb3_td2">已选商品 <label id="quantity" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
             <td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="totalPrice" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
-            <td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+            <td class="tb3_td4"><span id="jz1">结算</span><a href="#" onclick="pay()" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
         </tr>
     </table>
-
+    <div >
+        <div class="checkout-right-basket" style="margin-top: 20px;margin-bottom: 20px">
+            <a href="index.jsp"><span class="glyphicon glyphicon-menu-left" ></span>继续选菜</a>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
 </div>
 
     <!-- //footer -->
@@ -327,8 +330,19 @@
             <div class="clearfix"> </div>
         </div>
     </div>
-    <!-- //footer -->
-    <!-- Bootstrap Core JavaScript -->
+<script>
+
+    function pay(){
+        var str='';
+        $(".gwc_tb2 input[name=newslist]").each(function () {
+            if ($(this).attr("checked")) {
+               str=str+$(this).attr("lang")+","
+            }
+    })
+       window.location.href="selectOrder.action?param="+str+"&userId="+1;
+    }
+</script>
+
 
 </div>
 </body>

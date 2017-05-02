@@ -47,4 +47,9 @@ public class CartServiceImpl implements CartService{
     public void deleteCart(Cart cart) {
         cartMapper.deleteCart(cart);
     }
+
+    @Override
+    public List<Cart> selectOrderCart(List list) {
+        return cartMapper.selectOrderCart(list);
+    }
 }

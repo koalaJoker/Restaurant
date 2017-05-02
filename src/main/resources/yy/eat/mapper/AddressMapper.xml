@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yy.eat.mapper.AddressMapper">
+    <resultMap id="ResultMap" type="yy.eat.dto.Address">
+        <id column="ADDRESS_ID" property="addressId"></id>
+        <result column="RECEIVER" property="receiver"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="addrsss" property="address"></result>
+        <result column="default_flag" property="defaultFlag"></result>
+        <result column="USER_ID" property="userId"></result>
+    </resultMap>
+
+    <select id="selectAddress" parameterType="yy.eat.dto.Address" resultMap="ResultMap">
+        SELECT
+            *
+        FROM
+            res_address a
+        WHERE
+        1=1
+        <if test="userId!=null ">
+            AND a.user_id = #{userId}
+        </if>
+
+    </select>
+
+    <select id="selectAddressById" parameterType="yy.eat.dto.Address" resultMap="ResultMap">
+         SELECT
+            *
+        FROM
+            res_address a
+        WHERE
+        a.ADDRESS_ID=#{addressId}
+
+    </select>
+    <update id="updateAddressDefault" parameterType="yy.eat.dto.Address">
+        UPDATE res_address a
+        SET a.DEFAULT_FLAG = 'N'
+        WHERE
+            a.DEFAULT_FLAG = 'Y'
+        AND a.USER_ID = #{userId}
+    </update>
+
+    <update id="setAddressDefault" parameterType="yy.eat.dto.Address">
+        UPDATE res_address a
+        SET a.DEFAULT_FLAG = 'Y'
+        WHERE
+        a.ADDRESS_ID=#{addressId}
+        AND a.USER_ID = #{userId}
+    </update>
+</mapper>

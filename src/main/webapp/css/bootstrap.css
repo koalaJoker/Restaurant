@@ -637,9 +637,7 @@ th {
 .glyphicon-shopping-cart:before {
   content: "\e116";
 }
-.glyphicon-folder-close:before {
-  content: "\e117";
-}
+
 .glyphicon-folder-open:before {
   content: "\e118";
 }
@@ -5690,16 +5688,6 @@ a.list-group-item-danger.active:focus {
 .well-sm {
   padding: 9px;
   border-radius: 3px;
-}
-.close {
-  float: right;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: .2;
 }
 .close:hover,
 .close:focus {

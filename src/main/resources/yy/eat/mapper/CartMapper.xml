@@ -60,4 +60,24 @@
         WHERE
             CART_ID = #{cartId}
     </delete>
+
+    <select id="selectOrderCart" parameterType="java.util.List" resultMap="ResultMap">
+           SELECT
+            r.CART_ID,
+            f.FOOD_ID,
+            f.FOOD_NAME,
+            f.FOOD_IMAGE,
+            f.DISCOUNT_PRICE,
+            r.QUANTITY
+        FROM
+            res_cart r,
+            res_food f
+        WHERE
+            r.FOOD_ID = f.FOOD_ID
+        AND r.CART_ID IN
+        <foreach collection="list" index="index" item="item"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

@@ -3,6 +3,7 @@
  */
 package yy.eat.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import yy.eat.dto.Cart;
 
 import java.util.List;
@@ -41,4 +42,6 @@ public interface CartMapper {
      * @param cart
      */
     void deleteCart(Cart cart);
+
+    List<Cart> selectOrderCart(@Param("list") List list);
 }

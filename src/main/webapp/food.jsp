@@ -59,7 +59,7 @@
     <div class="container" >
         <div class="agileinfo_single" >
             <div class="col-md-4 agileinfo_single_left" >
-                <img id="example" src="images/${foods.foodImage}" alt=" " class="img-responsive" width="320" height="300">
+                <img id="example" src="<%=request.getContextPath()%>/image.jsp?ppath=${foods.foodImage}" alt=" " class="img-responsive" width="320" height="300">
             </div>
             <div class="col-md-8 agileinfo_single_right">
                 <h2>${foods.foodName}</h2>
