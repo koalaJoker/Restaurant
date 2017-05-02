@@ -14,7 +14,9 @@ import yy.eat.dto.User;
 import yy.eat.service.SmsService;
 import yy.eat.service.UserService;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Random;
 
@@ -52,8 +54,9 @@ public class UserController {
 	}
 	@RequestMapping("/login")
 	@ResponseBody
-	public ModelAndView loginUser(User user,HttpSession httpSession){
+	public ModelAndView loginUser(User user,HttpSession httpSession,HttpServletRequest request,HttpServletResponse response){
 		ModelAndView modelAndView=new ModelAndView();
+		System.out.println("rember+++++++++++++++++++==:"+request.getParameter("remberme"));
 		User findUser=userService.findUserByPhone(user.getPhone());
 		System.out.println("get phone and password="+user.getPhone()+"  "+user.getPassword());
 		if (null==findUser){
@@ -66,6 +69,13 @@ public class UserController {
 			httpSession.setAttribute("userId",findUser.getId());
 			httpSession.setAttribute("userName",findUser.getName());
 			modelAndView.setViewName("index");
+			//将用户信息存入cookie
+			if (null!=request.getParameter("remberme")){
+				Cookie cookie =new Cookie("phone#password",findUser.getPhone()+","+findUser.getPassword());
+				cookie.setMaxAge(60 * 60 * 24 * 30);
+				//cookie.setPath("/restaurant");
+				response.addCookie(cookie);
+			}
 			return modelAndView;
 		}else {
 			modelAndView.setViewName("login");

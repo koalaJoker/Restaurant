@@ -38,6 +38,23 @@
             });
         });
     </script>
+    <%
+        String phoneAndPass="";
+        if(null != request.getCookies()){
+            Cookie[] cookie = request.getCookies();
+            for(int i = 0; i < cookie.length; i++)
+            {
+                if(cookie[i].getName().equals("phone#password"))
+                {
+                    phoneAndPass = cookie[i].getValue();
+                    String[] aa=phoneAndPass.split(",");
+                    request.setAttribute("phone",aa[0]);
+                    request.setAttribute("password",aa[1]);
+                    break;
+                }
+            }
+        }
+    %>
     <!-- start-smoth-scrolling -->
 </head>
 
@@ -62,11 +79,11 @@
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
             <form action="/login.action" method="post">
-                <input type="phone" id="phone" name="phone" placeholder="手机号" required=" " class="k-textbox">
-                <input type="password"  id="password" name="password" placeholder="密码" required=" " >
+                <input type="phone" id="phone" name="phone" value="${phone}"  placeholder="手机号" required=" " class="k-textbox">
+                <input type="password"  id="password" name="password" value="${password}" placeholder="密码" required=" " >
                 <div class="forgot">
                     <a href="#" style="color: #d3dbc1">忘记密码?</a>
-                    <div class="pull-right" style="margin-right: 10px"> <input type="checkbox" />记住密码</div>
+                    <div class="pull-right" style="margin-right: 10px"> <input id="remberme" name="remberme" type="checkbox" onclick="rember()"/>记住密码</div>
                 </div>
                 <input type="submit" value="登  录">
                 <span>${errorTip}</span>
@@ -189,6 +206,16 @@
     $(function(){
         $("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
     })
+</script>
+<script type="text/javascript">
+    function rember() {
+         if ($("input[type='checkbox']").is(':checked')){
+             $("input[type='checkbox']").value(1);
+         }else {
+             $("input[type='checkbox']").value(0);
+         }
+    }
+
 </script>
 </body>
 </html>
