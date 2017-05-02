@@ -15,15 +15,18 @@
             <result column="ORDER_ID" property="orderId"></result>
             <result column="FOOD_ID" property="foodId"></result>
             <result column="COUNT" property="count"></result>
-            <result column="FOOD_IMAGE" property="foodImage"></result>
-            <result column="f.FOOD_NAME" property="foodName"></result>
+            <association property="foods" javaType="Foods">
+                <id column="FOOD_ID" property="foodId"></id>
+                <result column="FOOD_NAME" property="foodName"></result>
+                <result column="FOOD_IMAGE" property="foodImage"></result>
+                <result column="DISCOUNT_PRICE" property="discountPrice"></result>
+            </association>
         </collection>
     </resultMap>
 
     <select id="getOrderByUserId" parameterType="yy.eat.dto.Order" resultMap="baseResultMap">
         SELECT
-            o.*, od.*, f.FOOD_IMAGE,
-            f.FOOD_NAME
+            *
         FROM
             res_order o,
             res_order_detail od,

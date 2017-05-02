@@ -348,9 +348,18 @@
 
 </div>
 <script>
+    var winObj;
     function editAddress(addressId){
-        window.open ('selectAddressById.action?addressId='+addressId,'newwindow','height=400,width=520,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')
+        winObj= window.open ('selectAddressById.action?addressId='+addressId,'newwindow','height=400,width=520,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')
+        var loop=setInterval(function () {
+            if(winObj.closed) {
+                clearInterval(loop);
+                location.reload();
+            }
+        }, 1000);
     }
+
+
     function changeAddress(receiver,telephone,address) {
         $("#addressInfo").html(address);
         $("#receiverInfo").text(receiver);

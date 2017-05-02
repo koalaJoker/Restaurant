@@ -15,9 +15,7 @@ public class OrderDetail {
 
 	private Long count;
 
-	private String foodImage;
-
-	private String foodName;
+	private Foods foods;
 
 	public Long getOrderDetailid() {
 		return orderDetailid;
@@ -51,20 +49,13 @@ public class OrderDetail {
 		this.count = count;
 	}
 
-	public String getFoodImage() {
-		return foodImage;
+
+	public Foods getFoods() {
+		return foods;
 	}
 
-	public void setFoodImage(String foodImage) {
-		this.foodImage = foodImage;
-	}
-
-	public String getFoodName() {
-		return foodName;
-	}
-
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
+	public void setFoods(Foods foods) {
+		this.foods = foods;
 	}
 }
 
