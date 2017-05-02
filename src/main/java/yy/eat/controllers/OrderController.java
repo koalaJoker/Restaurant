@@ -37,13 +37,17 @@ public class OrderController {
 
 	@RequestMapping("/getOrders")
 	 public ModelAndView getOrders(HttpServletRequest request){
-       String strUserId= (String) request.getSession().getAttribute("userId");
+       String strUserId= String.valueOf(request.getSession().getAttribute("userId"));
        ModelAndView modelAndView=new ModelAndView();
-       if (null!=strUserId){//已经登录
-       	long intUserId=Long.parseLong(strUserId);
-       	List<Order> orders=orderMapper.getOrderByUserId(intUserId);
-       	modelAndView.setViewName("");
-       	modelAndView.addObject("orders",orders);
+       if (null!=strUserId){
+       	    //已经登录
+		   long intUserId=Long.parseLong(strUserId);
+       	   List<Order> orders=orderMapper.getOrderByUserId(intUserId);
+		   for (Order order:orders) {
+			   System.out.println(order.getCreationDate());
+		   }
+		   modelAndView.setViewName("order");
+       	   modelAndView.addObject("orders",orders);
 
 	   }else{//未登录状态
 		   modelAndView.setViewName("login");

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class Order {
-	private Long id;
+	private Long orderId;
 
 	private String serialNum;
 
@@ -27,12 +27,12 @@ public class Order {
 
     private List<OrderDetail> details;
 
-	public Long getId() {
-		return id;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public String getSerialNum() {
@@ -98,5 +98,6 @@ public class Order {
 	public void setDetails(List<OrderDetail> details) {
 		this.details = details;
 	}
+
 }
 
