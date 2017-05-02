@@ -57,8 +57,9 @@
    function saveFunction() {
        var receiver=$("#user-name").val();
        var telephone=$("#user-phone").val();
-       var address=$("#user-intro").text();
+       var address=$("#user-intro").val();
        $.ajax({
+           async: false,
            url:"updateAddress.action",
            dataType:"json",
            type:"POST",

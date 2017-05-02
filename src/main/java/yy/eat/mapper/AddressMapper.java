@@ -35,4 +35,10 @@ public interface AddressMapper {
     * @return
     */
    Address selectAddressById(Address address);
+
+   /**
+    * 更新地址
+    * @param address
+    */
+   void updateAddress(Address address);
 }

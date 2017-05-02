@@ -10,13 +10,13 @@
         <result column="CUSTOMER_REMARK" property="customerRemark"></result>
         <result column="STATUS" property="status"></result>
         <result column="CREATION_DATE" property="creationDate"></result>
-        <result column="FOOD_IMAGE" property="foodImage"></result>
-        <result column="f.FOOD_NAME" property="foodName"></result>
         <collection property="details" ofType="yy.eat.dto.OrderDetail">
             <id column="ORDER_DETAIL_ID" property="orderDetailid"></id>
             <result column="ORDER_ID" property="orderId"></result>
             <result column="FOOD_ID" property="foodId"></result>
             <result column="COUNT" property="count"></result>
+            <result column="FOOD_IMAGE" property="foodImage"></result>
+            <result column="f.FOOD_NAME" property="foodName"></result>
         </collection>
     </resultMap>
 

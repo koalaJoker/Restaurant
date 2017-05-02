@@ -68,11 +68,7 @@ public class PayController {
     }
 
     @RequestMapping("/updateAddress")
-    public ModelAndView updateAddress(Address address){
-        Address address1=addressService.selectAddressById(address);
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.addObject("address",address1);
-        modelAndView.setViewName("address");
-        return modelAndView;
+    public void updateAddress(Address address){
+        addressService.updateAddress(address);
     }
 }

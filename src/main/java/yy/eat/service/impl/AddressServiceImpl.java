@@ -42,4 +42,9 @@ public class AddressServiceImpl implements AddressService{
     public Address selectAddressById(Address address) {
         return addressMapper.selectAddressById(address);
     }
+
+    @Override
+    public void updateAddress(Address address) {
+        addressMapper.updateAddress(address);
+    }
 }

@@ -48,7 +48,12 @@
         AND a.USER_ID = #{userId}
     </update>
 
-    <update id="">
-
+    <update id="updateAddress" parameterType="yy.eat.dto.Address">
+        UPDATE res_address a
+        SET a.ADDRESS = #{address},
+         a.TELEPHONE = #{telephone},
+         a.RECEIVER = #{receiver}
+        WHERE
+            a.ADDRESS_ID =#{addressId}
     </update>
 </mapper>

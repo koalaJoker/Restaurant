@@ -25,10 +25,6 @@ public class Order {
 
 	private Date creationDate;
 
-	private String foodImage;
-
-	private String foodName;
-
     private List<OrderDetail> details;
 
 	public Long getId() {
@@ -93,22 +89,6 @@ public class Order {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
-	}
-
-	public String getFoodImage() {
-		return foodImage;
-	}
-
-	public void setFoodImage(String foodImage) {
-		this.foodImage = foodImage;
-	}
-
-	public String getFoodName() {
-		return foodName;
-	}
-
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
 	}
 
 	public List<OrderDetail> getDetails() {

@@ -15,6 +15,10 @@ public class OrderDetail {
 
 	private Long count;
 
+	private String foodImage;
+
+	private String foodName;
+
 	public Long getOrderDetailid() {
 		return orderDetailid;
 	}
@@ -45,6 +49,22 @@ public class OrderDetail {
 
 	public void setCount(Long count) {
 		this.count = count;
+	}
+
+	public String getFoodImage() {
+		return foodImage;
+	}
+
+	public void setFoodImage(String foodImage) {
+		this.foodImage = foodImage;
+	}
+
+	public String getFoodName() {
+		return foodName;
+	}
+
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
 	}
 }
 

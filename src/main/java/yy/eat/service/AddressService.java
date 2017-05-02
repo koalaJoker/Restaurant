@@ -30,4 +30,6 @@ public interface AddressService {
     void  setAddressDefault(Address address);
 
     Address selectAddressById(Address address);
+
+    void updateAddress(Address address);
 }
