@@ -35,7 +35,7 @@
             <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">
-                <a href="/queryCart.action?userId=1" style="color: white">购物车<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+                <a href="/queryCart.action" style="color: white">购物车<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
 
             </form>
             <script>

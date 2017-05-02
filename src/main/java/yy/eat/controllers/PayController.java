@@ -13,6 +13,7 @@ import yy.eat.dto.Cart;
 import yy.eat.service.AddressService;
 import yy.eat.service.CartService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,23 +33,23 @@ public class PayController {
     private AddressService addressService;
 
     @RequestMapping("/selectOrder")
-    public ModelAndView selectMenu(Address address,
+    public ModelAndView selectMenu(HttpServletRequest request, Address address,
                                    @RequestParam(name = "param",required = true) String param){
-
-       String[] str= param.split(",");
+        String strUserId=String.valueOf(request.getSession().getAttribute("userId"));
+        ModelAndView modelAndView=new ModelAndView();
+        if ("null"!=strUserId) {//已经登录
+        address.setUserId(Long.parseLong(strUserId));
+        String[] str= param.split(",");
         List list= Arrays.asList(str);
         List<Cart> cartList =cartService.selectOrderCart(list);
-        ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("cartList",cartList);
-//        //删除购物车的选中
-//        for(int i=0;i<str.length;i++){
-//            Cart cart=new Cart();
-//            cart.setCartId(Long.parseLong(str[i]));
-//            cartService.deleteCart(cart);
-//        }
         List<Address> addressList=addressService.selectAddress(address);
         modelAndView.addObject("addressList",addressList);
-        modelAndView.setViewName("pay");
+        modelAndView.setViewName("pay");}
+        else{//未登录状态
+            modelAndView.setViewName("login");
+            modelAndView.addObject("errorTip","尚未登录");
+        }
        return modelAndView;
     }
 

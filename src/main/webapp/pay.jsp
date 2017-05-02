@@ -371,13 +371,13 @@
     }
 
     function setDefault(addressId) {
-        var userId=1;
+        var userId=${session.userId};
         $.ajax({
             url:"addressDefault.action",
             dataType:"json",
             type:"POST",
             data:
-                {"addressId":addressId,"userId":1},
+                {"addressId":addressId,"userId":userId},
 
         })
 

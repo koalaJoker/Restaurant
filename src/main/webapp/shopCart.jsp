@@ -339,7 +339,7 @@
                str=str+$(this).attr("lang")+","
             }
     })
-       window.location.href="selectOrder.action?param="+str+"&userId="+1;
+       window.location.href="selectOrder.action?param="+str;
     }
 </script>
 

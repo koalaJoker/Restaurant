@@ -37,10 +37,17 @@ public class CartController {
 
     @RequestMapping("/queryCart")
     public ModelAndView query(Cart cart , HttpServletRequest request) {
-        List<Cart> cartList=cartService.selectCart(cart);
+        String strUserId= String.valueOf(request.getSession().getAttribute("userId"));
         ModelAndView modelAndView =new ModelAndView();
+        if ("null"!=strUserId) {//已经登录
+            cart.setUserId(Long.parseLong(strUserId));
+        List<Cart> cartList=cartService.selectCart(cart);
         modelAndView.addObject("cartList",cartList);
         modelAndView.setViewName("shopCart");
+        }else{//未登录状态
+            modelAndView.setViewName("login");
+            modelAndView.addObject("errorTip","尚未登录");
+        }
         return modelAndView;
     }
 
