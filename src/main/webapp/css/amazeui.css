@@ -1829,8 +1829,8 @@ fieldset[disabled] .am-btn-warning.am-active {
 }
 .am-btn-danger {
   color: #fff;
-  background-color: #dd514c;
-  border-color: #dd514c;
+  background-color: #f26522;
+  border-color: #f26522;
 }
 a.am-btn-danger:visited {
   color: #fff;
@@ -1841,17 +1841,17 @@ a.am-btn-danger:visited {
 .am-btn-danger.am-active,
 .am-active .am-btn-danger.am-dropdown-toggle {
   color: #fff;
-  border-color: #c62b26;
+  border-color: #f26522;
 }
 .am-btn-danger:hover,
 .am-btn-danger:focus {
-  background-color: #d7342e;
+  background-color: #f26522;
 }
 .am-btn-danger:active,
 .am-btn-danger.am-active,
 .am-active .am-btn-danger.am-dropdown-toggle {
   background-image: none;
-  background-color: #be2924;
+  background-color: #f26522;
 }
 .am-btn-danger.am-disabled,
 .am-btn-danger[disabled],
@@ -1868,12 +1868,12 @@ fieldset[disabled] .am-btn-danger:active,
 .am-btn-danger.am-disabled.am-active,
 .am-btn-danger[disabled].am-active,
 fieldset[disabled] .am-btn-danger.am-active {
-  background-color: #dd514c;
-  border-color: #dd514c;
+  background-color:#f26522;
+  border-color: #f26522;
 }
 .am-btn-group .am-btn-danger,
 .am-btn-group-stacked .am-btn-danger {
-  border-color: #d93c37;
+  border-color: #f26522;
 }
 .am-btn-success {
   color: #fff;
@@ -2255,7 +2255,7 @@ th {
 .am-table > thead > tr.am-danger > th,
 .am-table > tbody > tr.am-danger > th,
 .am-table > tfoot > tr.am-danger > th {
-  color: #dd514c;
+  color: #f26522;
   background-color: rgba(221, 81, 76, 0.115);
 }
 /* ==========================================================================
@@ -8071,7 +8071,7 @@ img.am-thumbnail,
   color: #F37B1D;
 }
 .am-text-danger {
-  color: #dd514c;
+  color: #F37B1D;
 }
 .am-link-muted {
   color: #666;

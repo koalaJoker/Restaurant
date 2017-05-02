@@ -17,7 +17,7 @@
     </div>
     <hr/>
     <div class="am-u-md-12">
-        <form class="am-form am-form-horizontal" id="addressForm" action="queryCart.action" method="post">
+        <form class="am-form am-form-horizontal" id="addressForm">
             <div class="am-form-group">
                 <label for="user-name" class="am-form-label">收货人</label>
                 <div class="am-form-content">
@@ -55,7 +55,20 @@
        window.close();
    }
    function saveFunction() {
+       var receiver=$("#user-name").val();
+       var telephone=$("#user-phone").val();
+       var address=$("#user-intro").text();
+       $.ajax({
+           url:"updateAddress.action",
+           dataType:"json",
+           type:"POST",
+           data:
+               {"addressId":${address.addressId},
+                 "receiver":receiver,
+                 "telephone":telephone,
+                 "address":address},
 
+       })
        window.close();
    }
 </script>

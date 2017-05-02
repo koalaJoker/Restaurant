@@ -349,7 +349,7 @@
 </div>
 <script>
     function editAddress(addressId){
-        window.open ('updateAddress.action?addressId='+addressId,'newwindow','height=400,width=520,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')
+        window.open ('selectAddressById.action?addressId='+addressId,'newwindow','height=400,width=520,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')
     }
     function changeAddress(receiver,telephone,address) {
         $("#addressInfo").html(address);

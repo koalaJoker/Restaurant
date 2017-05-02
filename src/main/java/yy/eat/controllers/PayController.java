@@ -58,6 +58,15 @@ public class PayController {
         addressService.setAddressDefault(address);
     }
 
+    @RequestMapping("/selectAddressById")
+    public ModelAndView selectAddressById(Address address){
+        Address address1=addressService.selectAddressById(address);
+        ModelAndView modelAndView =new ModelAndView();
+        modelAndView.addObject("address",address1);
+        modelAndView.setViewName("address");
+        return modelAndView;
+    }
+
     @RequestMapping("/updateAddress")
     public ModelAndView updateAddress(Address address){
         Address address1=addressService.selectAddressById(address);

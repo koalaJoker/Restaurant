@@ -47,4 +47,8 @@
         a.ADDRESS_ID=#{addressId}
         AND a.USER_ID = #{userId}
     </update>
+
+    <update id="">
+
+    </update>
 </mapper>
