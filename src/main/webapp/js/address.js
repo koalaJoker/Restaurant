@@ -15,7 +15,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
              var count=t.val()*($("#price"+q).text());
              $("#count"+q).text(count);
              var dis=count-pcount;
-             $("#sum").text( parseInt($("#sum").text())+dis);
+             $("#sum").text(parseInt($("#sum").text())+dis);
+             $("#hiddenSum").val($("#sum").text());
          })
       $(".min").click(function(){
        var t=$(this).parent().find('input[class*=text_box]');
@@ -29,6 +30,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           $("#count"+c).text(count);
           var dis=count-pcount;
           $("#sum").text( parseInt($("#sum").text())+dis);
+          $("#hiddenSum").val($("#sum").text());
        })
     }) 
 

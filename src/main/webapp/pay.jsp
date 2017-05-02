@@ -49,6 +49,7 @@
     </div>
 <div class="concent">
     <!--地址 -->
+    <form id="orderForm" action="submitOrder.action" method="post">
     <div class="paycont">
         <div class="address">
             <h3>确认送餐地址 </h3>
@@ -60,7 +61,7 @@
                 <c:forEach items="${addressList}" var="address">
                     <c:if test="${address.defaultFlag=='Y'}">
                 <div class="per-border"></div>
-                <li class="user-addresslist defaultAddr" onclick="changeAddress('${address.receiver}','${address.telephone}','${address.address}')">
+                <li class="user-addresslist defaultAddr" onclick="changeAddress('${address.addressId}','${address.receiver}','${address.telephone}','${address.address}')">
                     <div class="address-left">
                         <div class="user DefaultAddr">
                             <span class="buy-address-detail">
@@ -95,7 +96,7 @@
                 <c:forEach items="${addressList}" var="address">
                     <c:if test="${address.defaultFlag=='N'}">
                 <div class="per-border"></div>
-                <li class="user-addresslist" onclick="changeAddress('${address.receiver}','${address.telephone}','${address.address}')">
+                <li class="user-addresslist" onclick="changeAddress('${address.addressId}','${address.receiver}','${address.telephone}','${address.address}')">
                     <div class="address-left">
                         <div class="user DefaultAddr">
 
@@ -160,13 +161,14 @@
                 </div>
                 <div class="clear"></div>
 
-                <c:forEach items="${cartList}" var="order">
+                <c:forEach items="${cartList}" var="order" varStatus="status">
                 <tr class="item-list">
                     <div class="bundle  bundle-last">
                         <div class="bundle-main">
                             <ul class="item-content clearfix">
                                 <div class="pay-phone">
                                     <li class="td td-item">
+                                        <input type="hidden"  name="details[${status.index}].foodId" value="${order.foods.foodId}">
                                         <div class="item-pic">
                                             <a href="#" class="J_MakePoint">
                                                 <img height="80px" width="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${order.foods.foodImage}" class="itempic J_ItemImg"></a>
@@ -192,7 +194,7 @@
                                             <span class="phone-title">购买数量</span>
                                             <div class="sl">
                                                 <input class="min am-btn" name="" type="button" value="-" />
-                                                <input class="text_box"  name="" type="text" value="${order.quantity}" style="width:30px;" lang="${order.cartId}"/>
+                                                <input class="text_box"   name="details[${status.index}].count" type="text" value="${order.quantity}" style="width:30px;" lang="${order.cartId}"/>
                                                 <input class="add am-btn" name="" type="button" value="+" />
                                             </div>
                                         </div>
@@ -220,7 +222,7 @@
                 <div class="order-user-info">
                     <div id="holyshit257" class="memo">
                         <label>买家留言：</label>
-                        <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
+                        <input id="remark" name="customerRemark" type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
                         <div class="msg hidden J-msg">
                             <p class="error">最多输入500个字符</p>
                         </div>
@@ -238,19 +240,20 @@
                 <div class="box">
                     <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
                         <span class="price g_price ">
-                                    <em class="style-large-bold-red " id="sum">
+                                    <em class="style-large-bold-red " id="sum" >
                                         <c:set var="sum" value="0"></c:set>
                                         <c:forEach items="${cartList}" var="vvv">
                                             <c:set var="sum" value="${sum+vvv.quantity*vvv.foods.discountPrice}"></c:set>
                                         </c:forEach>
                                        ${sum}
                                     </em>
-											</span>
+                            <input id="hiddenSum" name="totalPrice" type="hidden" value="${sum}">
+									</span>
                     </div>
-
                     <div id="holyshit268" class="pay-address">
                    <c:forEach items="${addressList}" var="address">
                       <c:if test="${address.defaultFlag=='Y'}">
+                       <input id="hiddenAddress" name="addressId" type="hidden" value="${address.addressId}">
                         <p class="buy-footer-address">
                             <span class="buy-line-title buy-line-title-type">送餐至：</span>
                             <span class="buy--address-detail">
@@ -261,9 +264,9 @@
                         <p class="buy-footer-address">
                             <span class="buy-line-title">收货人：</span>
                             <span class="buy-address-detail">
-                                         <span class="buy-user" id="receiverInfo">${address.receiver} </span>
-												<span class="buy-phone" id="phoneInfo">${address.telephone}</span>
-												</span>
+                                   <span class="buy-user" id="receiverInfo">${address.receiver} </span>
+									<span class="buy-phone" id="phoneInfo">${address.telephone}</span>
+									</span>
                         </p>
                       </c:if>
                    </c:forEach>
@@ -272,14 +275,14 @@
 
                 <div id="holyshit269" class="submitOrder">
                     <div class="go-btn-wrap">
-                        <a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                        <a id="J_Go" href="#" onclick="submitOrder()" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
-
+    </form>
     <div class="clear"></div>
 </div>
 
@@ -360,11 +363,13 @@
     }
 
 
-    function changeAddress(receiver,telephone,address) {
+    function changeAddress(addressId,receiver,telephone,address) {
+        $("#hiddenAddress").val(addressId);
         $("#addressInfo").html(address);
         $("#receiverInfo").text(receiver);
         $("#phoneInfo").text(telephone);
     }
+
     function setDefault(addressId) {
         var userId=1;
         $.ajax({
@@ -377,6 +382,9 @@
         })
 
         location.reload();
+    }
+    function submitOrder() {
+        $("#orderForm").submit();
     }
 </script>
 </body>

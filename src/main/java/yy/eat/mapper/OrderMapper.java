@@ -14,4 +14,6 @@ import java.util.List;
 public interface OrderMapper {
 
 	List<Order> getOrderByUserId(@Param("userId") Long  userId);
+
+	void insertOrder(Order order);
 }

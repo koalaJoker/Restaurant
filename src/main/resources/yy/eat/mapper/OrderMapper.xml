@@ -36,4 +36,18 @@
         AND f.FOOD_ID = od.FOOD_ID
         AND o.USER_ID=#{userId}
     </select>
+
+    <insert id="insertOrder" parameterType="yy.eat.dto.Order">
+        INSERT INTO res_order (
+            SERIAL_NUMBER,
+            USER_ID,
+            ADDRESS_ID,
+            TOTAL_PRICE,
+            CUSTOMER_REMARK,
+            `STATUS`
+        )
+        VALUES
+            (
+               #{serialNum},#{userId},#{addressId},#{totalPrice},#{customerRemark},#{status})
+    </insert>
 </mapper>

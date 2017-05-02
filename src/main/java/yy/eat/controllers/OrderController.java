@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import yy.eat.dto.Order;
 import yy.eat.mapper.OrderMapper;
+import yy.eat.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,6 +25,9 @@ import java.util.List;
 public class OrderController {
 	@Autowired
 	private OrderMapper orderMapper;
+
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping("/getOrders")
 	 public ModelAndView getOrders(HttpServletRequest request){
@@ -41,5 +45,12 @@ public class OrderController {
 	   }
 	 	return modelAndView;
 	 }
+
+	@RequestMapping("/submitOrder")
+	public ModelAndView getOrdersa(Order order){
+		orderService.insertOrder(order);
+		ModelAndView modelAndView=new ModelAndView();
+		return modelAndView;
+	}
 }
 
