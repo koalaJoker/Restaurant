@@ -39,10 +39,10 @@ public class UserController {
 		int radomInt = new Random().nextInt(999999);
 		sms.setPhone(request.getParameter("phone"));
 		sms.setCode(String.valueOf(radomInt));
-		//Boolean falg=smsService.sendSMS(sms);
-		Boolean falg=true;
+		Boolean falg=smsService.sendSMS(sms);
+		//Boolean falg=true;
 		if (falg)return sms.getCode();
-        return Boolean.FALSE.toString();
+       return Boolean.FALSE.toString();
 	}
     @RequestMapping("/regiest")
 	@ResponseBody

@@ -21,10 +21,10 @@ import yy.eat.utils.RestTest;
 public class SmsServiceImpl implements SmsService{
    	@Autowired
 	private UserMapper userMapper;
-	final  String accountSid = "ef32dde9c4051406132b63fd136b4a7e";
-	final  String authToken = "ad7c5ef5055aac24187444cd12e01398";
-	final  String appId = "9b182847839749ef8da6fc0070e92e9f";
-	final  String templateId = "28502";
+	final  String accountSid = "ef32dde9c4051406132b63fd136b4a7e";//授权码
+	final  String authToken = "ad7c5ef5055aac24187444cd12e01398";//作者标识
+	final  String appId = "9b182847839749ef8da6fc0070e92e9f";//应用模板id
+	final  String templateId = "28502";//短信模板id
 	@Override
 	public Boolean sendSMS(SmsData smsData) {
 		System.out.println("findUserByPhone"+userMapper.findUserByPhone(smsData.getPhone()));
