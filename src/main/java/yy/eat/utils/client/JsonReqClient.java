@@ -30,7 +30,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version).
@@ -43,7 +43,7 @@ public class JsonReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -63,7 +63,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version).
@@ -85,7 +85,7 @@ public class JsonReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
@@ -125,7 +125,7 @@ public class JsonReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -143,7 +143,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
@@ -197,7 +197,7 @@ public class JsonReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -216,9 +216,9 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/2014-06-30/Accounts/").append(accountSid)
 					.append("/chargeClient")
@@ -238,7 +238,7 @@ public class JsonReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -258,9 +258,9 @@ public class JsonReqClient extends AbsRestClient {
 				try {
 					//MD5加密
 					EncryptUtil encryptUtil = new EncryptUtil();
-					// 构�?请求URL内容
+					// 构请求URL内容
 					String timestamp = DateUtil.dateToStr(new Date(),
-							DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+							DateUtil.DATE_TIME_NO_SLASH);// 时间
 					String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 					String url = getStringBuffer().append("/").append(version)
 							.append("/Accounts/").append(accountSid)
@@ -279,7 +279,7 @@ public class JsonReqClient extends AbsRestClient {
 					if (entity != null) {
 						result = EntityUtils.toString(entity, "UTF-8");
 					}
-					// 确保HTTP响应内容全部被读出或者内容流被关�?
+					// 确保HTTP响应内容全部被读出或者内容流被关
 					EntityUtils.consume(entity);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -299,9 +299,9 @@ public class JsonReqClient extends AbsRestClient {
 				try {
 					//MD5加密
 					EncryptUtil encryptUtil = new EncryptUtil();
-					// 构�?请求URL内容
+					// 构请求URL内容
 					String timestamp = DateUtil.dateToStr(new Date(),
-							DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+							DateUtil.DATE_TIME_NO_SLASH);// 时间
 					String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 					String url = getStringBuffer().append("/").append(version)
 							.append("/Accounts/").append(accountSid)
@@ -321,7 +321,7 @@ public class JsonReqClient extends AbsRestClient {
 					if (entity != null) {
 						result = EntityUtils.toString(entity, "UTF-8");
 					}
-					// 确保HTTP响应内容全部被读出或者内容流被关�?
+					// 确保HTTP响应内容全部被读出或者内容流被关
 					EntityUtils.consume(entity);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -340,8 +340,8 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
-			String timestamp = DateUtil.dateToStr(new Date(),DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+			// 构请求URL内容
+			String timestamp = DateUtil.dateToStr(new Date(),DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -380,7 +380,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
 					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
@@ -419,7 +419,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
 					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
@@ -459,7 +459,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
@@ -493,7 +493,7 @@ public class JsonReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)

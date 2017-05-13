@@ -9,7 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Single Page</title>
+    <title>菜品详情</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,6 +30,8 @@
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="css/personal.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -49,8 +51,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Singlepage</li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">${foods.foodName}</li>
         </ol>
     </div>
 </div>
@@ -59,7 +61,8 @@
     <div class="container" >
         <div class="agileinfo_single" >
             <div class="col-md-4 agileinfo_single_left" >
-                <img id="example" src="<%=request.getContextPath()%>/image.jsp?ppath=${foods.foodImage}" alt=" " class="img-responsive" width="320" height="300">
+                <img src="<%=request.getContextPath()%>/image.jsp?ppath=${foods.foodImage}"
+                     alt=" " class="img-responsive" width="320" height="300">
             </div>
             <div class="col-md-8 agileinfo_single_right">
                 <h2>${foods.foodName}</h2>
@@ -77,27 +80,14 @@
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4 class="m-sing">$${foods.discountPrice} <span>$${foods.originalPrice}</span></h4>
+                        <h4 class="m-sing">￥ ${foods.discountPrice}
+                            <span>￥ ${foods.originalPrice}</span></h4>
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="#" method="post">
-                            <fieldset>
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="add" value="1">
-                                <input type="hidden" name="business" value=" ">
-                                <input type="hidden" name="item_name" value="${foods.foodName}">
-                                <input type="hidden" name="amount" value="${foods.originalPrice}">
-                                <input type="hidden" name="discount_amounet" value=''>
-                                <input type="hidden" name="currency_code" value="USD">
-                                <input type="hidden" name="return" value=" ">
-                                <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button">
-                            </fieldset>
-                            <script>
-                                var put=${foods.originalPrice}-${foods.discountPrice};
-                                $("[name='discount_amounet']").val(put);
-                            </script>
-                        </form>
+                       <input type="submit" name="submit" value="加入购物车"
+                              onclick="addCart('${foods.foodId}','${userId}')" class="button">
+                        <div style="position: absolute; z-index:99;color:#fe9126">
+                            <span id="foodCart"></span></div>
                     </div>
                 </div>
             </div>
@@ -292,74 +282,18 @@
 <!-- //new -->
 <!-- //footer -->
 <div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Contact</h3>
-
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Information</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Category</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Profile</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
-                </ul>
-
-
-            </div>
-            <div class="clearfix"> </div>
-        </div>
+    <div class="footer-hd ">
+        <p>
+            &nbsp;&nbsp;&nbsp;四叶草餐厅，给你做好的选择。
+        </p>
     </div>
-
-    <div class="footer-copy">
-
-        <div class="container">
-            <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.htmlsucai.com/">&#72;&#84;&#77;&#76;&#32032;&#26448;&#32593;</a></p>
-        </div>
-    </div>
-
-</div>
-<div class="footer-botm">
-    <div class="container">
-        <div class="&#72;&#84;&#77;&#76;&#32032;&#26448;&#32593;-foot">
-            <ul>
-                <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-        <div class="payment-w3ls">
-            <img src="images/card.png" alt=" " class="img-responsive">
-        </div>
-        <div class="clearfix"> </div>
+    <div class="footer-bd ">
+        <p>
+            <a href="# ">关于四叶草</a>
+            <a href="# ">合作伙伴</a>
+            <a href="# ">联系我们</a>
+            <em>(c) 2015-2025 yuanyuan.com 版权所有</em>
+        </p>
     </div>
 </div>
 <!-- //footer -->
@@ -369,15 +303,6 @@
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
     $(document).ready(function() {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
-
         $().UItoTop({ easingType: 'easeOutQuart' });
 
     });
@@ -396,6 +321,23 @@
         });
 
     });
+</script>
+<script>
+    function addCart(foodId,userId) {
+        if(userId!=''){
+            $("#foodCart").text("已加入购物车!").show(300).delay(1000).hide(300);
+            //加入购物车
+            $.ajax({
+                url:"addToCart.action",
+                dataType:"json",
+                type:"POST",
+                data:
+                    {"foodId":foodId,"userId":userId,quantity:1},
+            })
+        }else{
+            location.href="login.jsp";
+        }
+    }
 </script>
 </body>
 </html>

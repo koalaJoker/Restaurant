@@ -4,7 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>我的订单</title>
 
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -21,6 +21,7 @@
     <link href="css/amazeui.css" rel="stylesheet" type="text/css">
     <link href="css/personal.css" rel="stylesheet" type="text/css">
     <link href="css/orstyle.css" rel="stylesheet" type="text/css">
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
     <%--<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>--%>
     <link href="css/font-awesome.css" rel="stylesheet">
     <script src="js/amazeui.js"></script>
@@ -46,7 +47,7 @@
                     <li class="am-active"><a href="#tab1">所有订单</a></li>
                     <li><a href="#tab3">待发货</a></li>
                     <li><a href="#tab4">待收货</a></li>
-                    <li><a href="#tab5">待评价</a></li>
+                    <%--<li><a href="#tab5">待评价</a></li>--%>
                 </ul>
 
                 <div class="am-tabs-bd">
@@ -61,9 +62,9 @@
                             <div class="th th-number">
                                 <td class="td-inner">数量</td>
                             </div>
-                            <div class="th th-operation">
-                                <td class="td-inner">商品操作</td>
-                            </div>
+                            <%--<div class="th th-operation">--%>
+                                <%--<td class="td-inner">&nbsp;&nbsp;&nbsp;&nbsp;</td>--%>
+                            <%--</div>--%>
                             <div class="th th-amount">
                                 <td class="td-inner">合计</td>
                             </div>
@@ -92,7 +93,7 @@
                                                     <li class="td td-item">
                                                         <div class="item-pic">
                                                             <a href="#" class="J_MakePoint">
-                                                                <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
+                                                                <img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}"  class="itempic J_ItemImg">
                                                             </a>
                                                         </div>
                                                         <div class="item-info">
@@ -121,7 +122,7 @@
                                                 </ul>
                                                 </c:forEach>
                                             </div>
-                                            <div class="order-right">
+                                            <div class="order-right" >
                                                 <li class="td td-amount">
                                                     <div class="item-amount">
                                                         合计：${order.totalPrice}
@@ -131,8 +132,8 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">交易成功</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
+                                                            <%--<p class="order-info"><a href="logistics.html">查看物流</a></p>--%>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -158,7 +159,7 @@
                                                            <li class="td td-item">
                                                                <div class="item-pic">
                                                                    <a href="#" class="J_MakePoint">
-                                                                       <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
+                                                                       <img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}"  class="itempic J_ItemImg">
                                                                    </a>
                                                                </div>
                                                                <div class="item-info">
@@ -181,7 +182,7 @@
                                                            </li>
                                                            <li class="td td-operation">
                                                                <div class="item-operation">
-                                                                   <a href="refund.html">退款</a>
+                                                                   <a href="refund.html"></a>
                                                                </div>
                                                            </li>
                                                        </ul>
@@ -197,7 +198,7 @@
                                                        <li class="td td-status">
                                                            <div class="item-status">
                                                                <p class="Mystatus">买家已付款</p>
-                                                               <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+                                                               <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
                                                            </div>
                                                        </li>
                                                        <li class="td td-change">
@@ -223,7 +224,7 @@
                                                            <li class="td td-item">
                                                                <div class="item-pic">
                                                                    <a href="#" class="J_MakePoint">
-                                                                       <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
+                                                                       <img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}" class="itempic J_ItemImg">
                                                                    </a>
                                                                </div>
                                                                <div class="item-info">
@@ -244,11 +245,11 @@
                                                                    <span>×</span>${detail.count}
                                                                </div>
                                                            </li>
-                                                           <li class="td td-operation">
-                                                               <div class="item-operation">
-                                                                   <a href="refund.html">退款/退货</a>
-                                                               </div>
-                                                           </li>
+                                                           <%--<li class="td td-operation">--%>
+                                                               <%--<div class="item-operation">--%>
+                                                                   <%--<a href="refund.html">退款/退货</a>--%>
+                                                               <%--</div>--%>
+                                                           <%--</li>--%>
                                                        </ul>
                                                    </c:forEach>
                                                </div>
@@ -262,9 +263,9 @@
                                                        <li class="td td-status">
                                                            <div class="item-status">
                                                                <p class="Mystatus">卖家已发货</p>
-                                                               <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                               <p class="order-info"><a href="logistics.html">查看物流</a></p>
-                                                               <p class="order-info"><a href="#">延长收货</a></p>
+                                                               <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
+                                                               <%--<p class="order-info"><a href="logistics.html">查看物流</a></p>--%>
+                                                               <%--<p class="order-info"><a href="#">延长收货</a></p>--%>
                                                            </div>
                                                        </li>
                                                        <li class="td td-change">
@@ -276,74 +277,75 @@
                                            </div>
                                        </div>
                                    </c:if>
-                                   <c:if test="${order.status=='待评价'}">
-                                       <!--不同状态的订单	-->
-                                       <div class="order-status4">
-                                           <div class="order-title">
-                                               <div class="dd-num">订单编号：<a href="javascript:;">${order.serialNum}</a></div>
-                                               <span>成交时间：<fmt:formatDate value="${order.creationDate}" pattern="yyyy-MM-dd hh:mm:ss"/></span>
+                                   <%--<c:if test="${order.status=='待评价'}">--%>
+                                       <%--<!--不同状态的订单	-->--%>
+                                       <%--<div class="order-status4">--%>
+                                           <%--<div class="order-title">--%>
+                                               <%--<div class="dd-num">订单编号：<a href="javascript:;">${order.serialNum}</a></div>--%>
+                                               <%--<span>成交时间：<fmt:formatDate value="${order.creationDate}" pattern="yyyy-MM-dd hh:mm:ss"/></span>--%>
 
-                                           </div>
-                                           <div class="order-content">
-                                               <div class="order-left">
-                                                   <ul class="item-list">
-                                                       <li class="td td-item">
-                                                           <div class="item-pic">
-                                                               <a href="#" class="J_MakePoint">
-                                                                   <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
-                                                               </a>
-                                                           </div>
-                                                           <div class="item-info">
-                                                               <div class="item-basic-info">
-                                                                   <a href="#">
-                                                                       <p>${detail.foods.foodName}</p>
-                                                                   </a>
-                                                               </div>
-                                                           </div>
-                                                       </li>
-                                                       <li class="td td-price">
-                                                           <div class="item-price">
-                                                                   ${detail.foods.discountPrice}
-                                                           </div>
-                                                       </li>
-                                                       <li class="td td-number">
-                                                           <div class="item-number">
-                                                               <span>×</span>${detail.count}
-                                                           </div>
-                                                       </li>
-                                                       <li class="td td-operation">
-                                                           <div class="item-operation">
-                                                               <a href="refund.html">退款/退货</a>
-                                                           </div>
-                                                       </li>
-                                                   </ul>
-
-                                               </div>
-                                               <div class="order-right">
-                                                   <li class="td td-amount">
-                                                       <div class="item-amount">
-                                                           合计：${order.totalPrice}
-                                                       </div>
-                                                   </li>
-                                                   <div class="move-right">
-                                                       <li class="td td-status">
-                                                           <div class="item-status">
-                                                               <p class="Mystatus">交易成功</p>
-                                                               <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                               <p class="order-info"><a href="logistics.html">查看物流</a></p>
-                                                           </div>
-                                                       </li>
-                                                       <li class="td td-change">
-                                                           <a href="commentlist.html">
-                                                               <div class="am-btn am-btn-danger anniu">
-                                                                   评价商品</div>
-                                                           </a>
-                                                       </li>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </c:if>
+                                           <%--</div>--%>
+                                           <%--<div class="order-content">--%>
+                                               <%--<div class="order-left">--%>
+                                                   <%--<c:forEach items="${order.details}" var="detail">--%>
+                                                   <%--<ul class="item-list">--%>
+                                                       <%--<li class="td td-item">--%>
+                                                           <%--<div class="item-pic">--%>
+                                                               <%--<a href="#" class="J_MakePoint">--%>
+                                                                   <%--<img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}" class="itempic J_ItemImg">--%>
+                                                               <%--</a>--%>
+                                                           <%--</div>--%>
+                                                           <%--<div class="item-info">--%>
+                                                               <%--<div class="item-basic-info">--%>
+                                                                   <%--<a href="#">--%>
+                                                                       <%--<p>${detail.foods.foodName}</p>--%>
+                                                                   <%--</a>--%>
+                                                               <%--</div>--%>
+                                                           <%--</div>--%>
+                                                       <%--</li>--%>
+                                                       <%--<li class="td td-price">--%>
+                                                           <%--<div class="item-price">--%>
+                                                                   <%--${detail.foods.discountPrice}--%>
+                                                           <%--</div>--%>
+                                                       <%--</li>--%>
+                                                       <%--<li class="td td-number">--%>
+                                                           <%--<div class="item-number">--%>
+                                                               <%--<span>×</span>${detail.count}--%>
+                                                           <%--</div>--%>
+                                                       <%--</li>--%>
+                                                       <%--&lt;%&ndash;<li class="td td-operation">&ndash;%&gt;--%>
+                                                           <%--&lt;%&ndash;<div class="item-operation">&ndash;%&gt;--%>
+                                                               <%--&lt;%&ndash;<a href="refund.html">退款/退货</a>&ndash;%&gt;--%>
+                                                           <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                                                       <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                                                   <%--</ul>--%>
+                                                   <%--</c:forEach>--%>
+                                               <%--</div>--%>
+                                               <%--<div class="order-right">--%>
+                                                   <%--<li class="td td-amount">--%>
+                                                       <%--<div class="item-amount">--%>
+                                                           <%--合计：${order.totalPrice}--%>
+                                                       <%--</div>--%>
+                                                   <%--</li>--%>
+                                                   <%--<div class="move-right">--%>
+                                                       <%--<li class="td td-status">--%>
+                                                           <%--<div class="item-status">--%>
+                                                               <%--<p class="Mystatus">交易成功</p>--%>
+                                                               <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
+                                                               <%--<p class="order-info"><a href="logistics.html">查看物流</a></p>--%>
+                                                           <%--</div>--%>
+                                                       <%--</li>--%>
+                                                       <%--<li class="td td-change">--%>
+                                                           <%--<a href="commentlist.html">--%>
+                                                               <%--<div class="am-btn am-btn-danger anniu">--%>
+                                                                   <%--评价商品</div>--%>
+                                                           <%--</a>--%>
+                                                       <%--</li>--%>
+                                                   <%--</div>--%>
+                                               <%--</div>--%>
+                                           <%--</div>--%>
+                                       <%--</div>--%>
+                                   <%--</c:if>--%>
                                </c:forEach>
                             </div>
                         </div>
@@ -361,9 +363,9 @@
                             <div class="th th-number">
                                 <td class="td-inner">数量</td>
                             </div>
-                            <div class="th th-operation">
-                                <td class="td-inner">商品操作</td>
-                            </div>
+                            <%--<div class="th th-operation">--%>
+                                <%--<td class="td-inner">商品操作</td>--%>
+                            <%--</div>--%>
                             <div class="th th-amount">
                                 <td class="td-inner">合计</td>
                             </div>
@@ -392,7 +394,7 @@
                                                         <li class="td td-item">
                                                             <div class="item-pic">
                                                                 <a href="#" class="J_MakePoint">
-                                                                    <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
+                                                                    <img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
@@ -413,11 +415,11 @@
                                                                 <span>×</span>${detail.count}
                                                             </div>
                                                         </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款</a>
-                                                            </div>
-                                                        </li>
+                                                        <%--<li class="td td-operation">--%>
+                                                            <%--<div class="item-operation">--%>
+                                                                <%--<a href="refund.html">退款</a>--%>
+                                                            <%--</div>--%>
+                                                        <%--</li>--%>
                                                     </ul>
                                                 </c:forEach>
                                             </div>
@@ -431,7 +433,7 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">买家已付款</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+                                                            <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -459,9 +461,9 @@
                             <div class="th th-number">
                                 <td class="td-inner">数量</td>
                             </div>
-                            <div class="th th-operation">
-                                <td class="td-inner">商品操作</td>
-                            </div>
+                            <%--<div class="th th-operation">--%>
+                                <%--<td class="td-inner">商品操作</td>--%>
+                            <%--</div>--%>
                             <div class="th th-amount">
                                 <td class="td-inner">合计</td>
                             </div>
@@ -472,12 +474,11 @@
                                 <td class="td-inner">交易操作</td>
                             </div>
                         </div>
-
                         <div class="order-main">
                             <div class="order-list">
                                <c:forEach items="${orders}" var="order">
                                 <!--不同状态订单-->
-                                <c:if test="${order.status=='确认收货'}">
+                                <c:if test="${order.status=='待收货'}">
                                     <div class="order-status3">
                                         <div class="order-title">
                                             <div class="dd-num">订单编号：<a href="javascript:;">${order.serialNum}</a></div>
@@ -490,7 +491,7 @@
                                                         <li class="td td-item">
                                                             <div class="item-pic">
                                                                 <a href="#" class="J_MakePoint">
-                                                                    <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
+                                                                    <img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}" class="itempic J_ItemImg">
                                                                 </a>
                                                             </div>
                                                             <div class="item-info">
@@ -511,11 +512,11 @@
                                                                 <span>×</span>${detail.count}
                                                             </div>
                                                         </li>
-                                                        <li class="td td-operation">
-                                                            <div class="item-operation">
-                                                                <a href="refund.html">退款/退货</a>
-                                                            </div>
-                                                        </li>
+                                                        <%--<li class="td td-operation">--%>
+                                                            <%--<div class="item-operation">--%>
+                                                                <%--<a href="refund.html">退款/退货</a>--%>
+                                                            <%--</div>--%>
+                                                        <%--</li>--%>
                                                     </ul>
                                                 </c:forEach>
                                             </div>
@@ -529,9 +530,9 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">卖家已发货</p>
-                                                            <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
-                                                            <p class="order-info"><a href="#">延长收货</a></p>
+                                                            <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
+                                                            <%--<p class="order-info"><a href="logistics.html">查看物流</a></p>--%>
+                                                            <%--<p class="order-info"><a href="#">延长收货</a></p>--%>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -548,113 +549,131 @@
                         </div>
                     </div>
 
-                    <div class="am-tab-panel am-fade" id="tab5">
-                        <div class="order-top">
-                            <div class="th th-item">
-                                <td class="td-inner">商品</td>
-                            </div>
-                            <div class="th th-price">
-                                <td class="td-inner">单价</td>
-                            </div>
-                            <div class="th th-number">
-                                <td class="td-inner">数量</td>
-                            </div>
-                            <div class="th th-operation">
-                                <td class="td-inner">商品操作</td>
-                            </div>
-                            <div class="th th-amount">
-                                <td class="td-inner">合计</td>
-                            </div>
-                            <div class="th th-status">
-                                <td class="td-inner">交易状态</td>
-                            </div>
-                            <div class="th th-change">
-                                <td class="td-inner">交易操作</td>
-                            </div>
-                        </div>
+                    <%--<div class="am-tab-panel am-fade" id="tab5">--%>
+                        <%--<div class="order-top">--%>
+                            <%--<div class="th th-item">--%>
+                                <%--<td class="td-inner">商品</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-price">--%>
+                                <%--<td class="td-inner">单价</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-number">--%>
+                                <%--<td class="td-inner">数量</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-operation">--%>
+                                <%--<td class="td-inner">商品操作</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-amount">--%>
+                                <%--<td class="td-inner">合计</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-status">--%>
+                                <%--<td class="td-inner">交易状态</td>--%>
+                            <%--</div>--%>
+                            <%--<div class="th th-change">--%>
+                                <%--<td class="td-inner">交易操作</td>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
 
-                        <div class="order-main">
-                            <div class="order-list">
-                                <c:forEach items="${orders}" var="order">
-                                    <c:if test="${order.status=='待评价'}">
-                                <!--不同状态的订单	-->
-                                <div class="order-status4">
-                                    <div class="order-title">
-                                        <div class="dd-num">订单编号：<a href="javascript:;">${order.serialNum}</a></div>
-                                        <span>成交时间：<fmt:formatDate value="${order.creationDate}" pattern="yyyy-MM-dd hh:mm:ss"/></span>
-                                    </div>
-                                    <div class="order-content">
-                                        <div class="order-left">
-                                            <ul class="item-list">
-                                                <li class="td td-item">
-                                                    <div class="item-pic">
-                                                        <a href="#" class="J_MakePoint">
-                                                            <img src="${detail.foods.foodImage}" class="itempic J_ItemImg">
-                                                        </a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-basic-info">
-                                                            <a href="#">
-                                                                <p>${detail.foods.foodName}</p>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="td td-price">
-                                                    <div class="item-price">
-                                                            ${detail.foods.discountPrice}
-                                                    </div>
-                                                </li>
-                                                <li class="td td-number">
-                                                    <div class="item-number">
-                                                        <span>×</span>${detail.count}
-                                                    </div>
-                                                </li>
-                                                <li class="td td-operation">
-                                                    <div class="item-operation">
-                                                        <a href="refund.html">退款/退货</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                        <%--<div class="order-main">--%>
+                            <%--<div class="order-list">--%>
+                                <%--<c:forEach items="${orders}" var="order">--%>
+                                    <%--<c:if test="${order.status=='待评价'}">--%>
+                                <%--<!--不同状态的订单	-->--%>
+                                <%--<div class="order-status4">--%>
+                                    <%--<div class="order-title">--%>
+                                        <%--<div class="dd-num">订单编号：<a href="javascript:;">${order.serialNum}</a></div>--%>
+                                        <%--<span>成交时间：<fmt:formatDate value="${order.creationDate}" pattern="yyyy-MM-dd hh:mm:ss"/></span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="order-content">--%>
+                                        <%--<div class="order-left">--%>
+                                            <%--<c:forEach items="${order.details}" var="detail">--%>
+                                            <%--<ul class="item-list">--%>
+                                                <%--<li class="td td-item">--%>
+                                                    <%--<div class="item-pic">--%>
+                                                        <%--<a href="#" class="J_MakePoint">--%>
+                                                            <%--<img height="80px" src="<%=request.getContextPath()%>/image.jsp?ppath=${detail.foods.foodImage}" class="itempic J_ItemImg">--%>
+                                                        <%--</a>--%>
+                                                    <%--</div>--%>
+                                                    <%--<div class="item-info">--%>
+                                                        <%--<div class="item-basic-info">--%>
+                                                            <%--<a href="#">--%>
+                                                                <%--<p>${detail.foods.foodName}</p>--%>
+                                                            <%--</a>--%>
+                                                        <%--</div>--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                                <%--<li class="td td-price">--%>
+                                                    <%--<div class="item-price">--%>
+                                                            <%--${detail.foods.discountPrice}--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                                <%--<li class="td td-number">--%>
+                                                    <%--<div class="item-number">--%>
+                                                        <%--<span>×</span>${detail.count}--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                                <%--<li class="td td-operation">--%>
+                                                    <%--<div class="item-operation">--%>
+                                                        <%--<a href="refund.html">退款/退货</a>--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                            <%--</ul>--%>
+                                            <%--</c:forEach>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="order-right">--%>
+                                            <%--<li class="td td-amount">--%>
+                                                <%--<div class="item-amount">--%>
+                                                    <%--合计：${order.totalPrice}--%>
+                                                <%--</div>--%>
+                                            <%--</li>--%>
+                                            <%--<div class="move-right">--%>
+                                                <%--<li class="td td-status">--%>
+                                                    <%--<div class="item-status">--%>
+                                                        <%--<p class="Mystatus">交易成功</p>--%>
+                                                        <%--<p class="order-info"><a href="orderinfo.html">订单详情</a></p>--%>
+                                                        <%--<p class="order-info"><a href="logistics.html">查看物流</a></p>--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                                <%--<li class="td td-change">--%>
+                                                    <%--<a href="commentlist.html">--%>
+                                                        <%--<div class="am-btn am-btn-danger anniu">--%>
+                                                            <%--评价商品</div>--%>
+                                                    <%--</a>--%>
+                                                <%--</li>--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                                    <%--</c:if>--%>
+                                <%--</c:forEach>--%>
 
-                                        </div>
-                                        <div class="order-right">
-                                            <li class="td td-amount">
-                                                <div class="item-amount">
-                                                    合计：${order.totalPrice}
-                                                </div>
-                                            </li>
-                                            <div class="move-right">
-                                                <li class="td td-status">
-                                                    <div class="item-status">
-                                                        <p class="Mystatus">交易成功</p>
-                                                        <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
-                                                        <p class="order-info"><a href="logistics.html">查看物流</a></p>
-                                                    </div>
-                                                </li>
-                                                <li class="td td-change">
-                                                    <a href="commentlist.html">
-                                                        <div class="am-btn am-btn-danger anniu">
-                                                            评价商品</div>
-                                                    </a>
-                                                </li>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                    </c:if>
-                                </c:forEach>
+                            <%--</div>--%>
 
-                            </div>
+                        <%--</div>--%>
 
-                        </div>
-
-                    </div>
+                    <%--</div>--%>
                 </div>
 
             </div>
         </div>
+        <div class="footer">
+            <div class="footer-hd ">
+                <p>
+                   &nbsp;&nbsp;&nbsp;四叶草餐厅，给你做好的选择。
+                </p>
+            </div>
+            <div class="footer-bd ">
+                <p>
+                    <a href="# ">关于四叶草</a>
+                    <a href="# ">合作伙伴</a>
+                    <a href="# ">联系我们</a>
+                    <em>(c) 2015-2025 yuanyuan.com 版权所有</em>
+                </p>
+            </div>
+        </div>
     </div>
+
 </div>
+
 </body>
 </html>

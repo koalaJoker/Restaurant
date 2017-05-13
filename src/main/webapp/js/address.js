@@ -8,7 +8,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 
      $(function(){
          $(".add").click(function(){
-          var t=$(this).parent().find('input[class*=text_box]');
+          var t=$(this).parent().find('input[class*=text_box]');//数量显示
            var q=$(this).parent().find('input[class*=text_box]').attr("lang");//标识
            var pcount=t.val()*($("#price"+q).text());//原金额
             t.val(parseInt(t.val())+1);
@@ -32,9 +32,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           $("#sum").text( parseInt($("#sum").text())+dis);
           $("#hiddenSum").val($("#sum").text());
        })
-    }) 
+    })
 
-	
+
 
 	    if (!document.getElementsByClassName) {
         document.getElementsByClassName = function (cls) {
@@ -49,7 +49,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             return ret;
         }
     }
- 
+
  
 //地址选择
 				$(function() {

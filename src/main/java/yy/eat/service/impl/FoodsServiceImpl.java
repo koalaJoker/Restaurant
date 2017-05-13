@@ -26,8 +26,6 @@ public class FoodsServiceImpl implements FoodsService {
     private FoodsMapper foodsMapper;
 
     public List<Foods> selectFoods(PageData<CuisineDetail> pageData){
-
-
         return foodsMapper.selectFoods(pageData);
     }
 
@@ -39,5 +37,20 @@ public class FoodsServiceImpl implements FoodsService {
     @Override
     public Foods selectFoodById(Foods foods) {
         return foodsMapper.selectFoodById(foods);
+    }
+
+    @Override
+    public void updateSaleVolume(Long count, Long foodId) {
+        foodsMapper.updateSaleVolume(count,foodId);
+    }
+
+    @Override
+    public List<Foods> selectSaleVolume() {
+        return foodsMapper.selectSaleVolume();
+    }
+
+    @Override
+    public List<Foods> selectSalePrice() {
+        return foodsMapper.selectSalePrice();
     }
 }

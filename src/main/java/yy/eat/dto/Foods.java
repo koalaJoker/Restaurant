@@ -25,6 +25,8 @@ public class Foods {
 
     private Long saleVolume;
 
+    private String saleFlag;
+
     private String description;
 
     private Long detailId;
@@ -81,6 +83,14 @@ public class Foods {
 
     public void setSaleVolume(Long saleVolume) {
         this.saleVolume = saleVolume;
+    }
+
+    public String getSaleFlag() {
+        return saleFlag;
+    }
+
+    public void setSaleFlag(String saleFlag) {
+        this.saleFlag = saleFlag;
     }
 
     public String getDescription() {

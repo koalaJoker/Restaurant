@@ -28,9 +28,9 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -43,7 +43,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,15 +63,15 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
 					.append("/Clients")
 					.append(".xml?sig=").append(signature).toString();
-			// base64(主账户Id + 冒号 +时间�?
+			// base64(主账户Id + 冒号 +时间
 			String body = (new StringBuilder("<?xml version='1.0' encoding='utf-8'?><client>")
 	              .append("<appId>").append(appId).append("</appId>")
 	              .append("<friendlyName>").append(clientName).append("</friendlyName>")
@@ -85,7 +85,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
@@ -122,7 +122,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -156,7 +156,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -176,7 +176,7 @@ public class XmlReqClient extends AbsRestClient {
 			EncryptUtil encryptUtil = new EncryptUtil();
 			// 构�?请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -192,7 +192,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -211,9 +211,9 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -247,9 +247,9 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -282,9 +282,9 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -318,8 +318,8 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
-			String timestamp = DateUtil.dateToStr(new Date(),DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+			// 构请求URL内容
+			String timestamp = DateUtil.dateToStr(new Date(),DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -355,9 +355,9 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
-					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
+					DateUtil.DATE_TIME_NO_SLASH);// 时间
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
 					.append("/Accounts/").append(accountSid)
@@ -391,7 +391,7 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			// 构�?请求URL内容
+			// 构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(),
 					DateUtil.DATE_TIME_NO_SLASH);// 时间�?
 			String signature =getSignature(accountSid,authToken,timestamp,encryptUtil);
@@ -428,7 +428,7 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)
@@ -444,7 +444,7 @@ public class XmlReqClient extends AbsRestClient {
 			if (entity != null) {
 				result = EntityUtils.toString(entity, "UTF-8");
 			}
-			// 确保HTTP响应内容全部被读出或者内容流被关�?
+			// 确保HTTP响应内容全部被读出或者内容流被关
 			EntityUtils.consume(entity);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -463,7 +463,7 @@ public class XmlReqClient extends AbsRestClient {
 		try {
 			//MD5加密
 			EncryptUtil encryptUtil = new EncryptUtil();
-			//构�?请求URL内容
+			//构请求URL内容
 			String timestamp = DateUtil.dateToStr(new Date(), DateUtil.DATE_TIME_NO_SLASH);
 			String signature=getSignature(accountSid, authToken,timestamp,encryptUtil);
 			String url = getStringBuffer().append("/").append(version)

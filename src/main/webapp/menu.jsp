@@ -1,8 +1,9 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>菜单</title>
 <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,6 +24,7 @@
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -42,8 +44,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Products</li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">菜品</li>
         </ol>
     </div>
 </div>
@@ -81,49 +83,50 @@
         <%--</div>--%>
         <div class="col-md-8 products-right">
             <div class="products-right-grid" >
-                <div class="products-right-grids">
-                    <div class="sorting">
-                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect" style="width: 180px;">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>
-                        </select>
-                    </div>
-                    <div class="sorting-left">
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect" >
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>
-                        </select>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
+                <%--<div class="products-right-grids">--%>
+                    <%--<div class="sorting">--%>
+                        <%--<select id="country" onchange="change_country(this.value)" class="frm-field required sect" style="width: 180px;">--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>--%>
+                        <%--</select>--%>
+                    <%--</div>--%>
+                    <%--<div class="sorting-left">--%>
+                        <%--<select id="country1" onchange="change_country(this.value)" class="frm-field required sect" >--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>--%>
+                            <%--<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>--%>
+                        <%--</select>--%>
+                    <%--</div>--%>
+                    <%--<div class="clearfix"> </div>--%>
+                <%--</div>--%>
             </div>
             <div class="agile_top_brands_grids">
             <c:if test="${foodData.data!=null}">
                 <c:forEach var="food" items="${foodData.data}" varStatus="j">
-                     <div class="col-md-4 top_brand_left" style="margin-top: 30px">
-                         <div class="hover14 column">
-                             <div class="agile_top_brand_left_grid">
-                                 <div class="agile_top_brand_left_grid_pos">
-                                     <img src="images/offer.png" alt=" " class="img-responsive">
+                    <div class="col-md-4 top_brand_left" style="margin-top: 30px">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="images/offer.png" alt=" " class="img-responsive">
                                  </div>
                                  <div class="agile_top_brand_left_grid1" >
-
-                                         <div class="snipcart-item block">
-                                             <div class="snipcart-thumb">
-                                                 <a href="selectFoodById.action?foodId=${food.foodId}"><img height="190px" width="170px" title=" " alt=" " src="<%=request.getContextPath()%>/image.jsp?ppath=${food.foodImage}"></a>
-                                                 <p>${food.foodName}</p>
-                                                 <h4>$${food.discountPrice}<span>$${food.originalPrice}</span></h4>
-                                             </div>
-                                             <div class="snipcart-details top_brand_home_details">
-                                                         <input type="submit" id="submit" value="Add to cart" onclick="addCart('cart${j.count}',${food.foodId})" class="button">
-                                                        <div style="position: absolute; z-index:99;color:#fe9126"><span id="cart${j.count}"></span></div>
-                                                 </form>
-                                             </div>
+                                     <div class="snipcart-item block">
+                                         <div class="snipcart-thumb">
+                                             <a href="selectFoodById.action?foodId=${food.foodId}">
+                                                 <img height="190px" width="170px" title=" " alt=" "
+                                                      src="<%=request.getContextPath()%>/image.jsp?ppath=${food.foodImage}"></a>
+                                             <p>${food.foodName}</p>
+                                             <h4>￥ ${food.discountPrice}<span>￥ ${food.originalPrice}</span></h4>
                                          </div>
+                                         <div class="snipcart-details top_brand_home_details">
+                                             <input type="submit" id="submit" value="加入购物车"
+                                                    onclick="addCart('cart${j.count}','${food.foodId}','${userId}')" class="button">
+                                             <div style="position: absolute; z-index:99;color:#fe9126"><span id="cart${j.count}"></span></div>
+                                         </div>
+                                     </div>
                                  </div>
                              </div>
                          </div>
@@ -250,48 +253,32 @@
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<!-- top-header and slider -->
-<!-- here stars scrolling icon -->
+
 <script type="text/javascript">
     $(document).ready(function() {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
-
         $().UItoTop({ easingType: 'easeOutQuart' });
 
     });
 </script>
-<!-- //here ends scrolling icon -->
 
-<!-- main slider-banner -->
-<script src="js/skdslider.min.js"></script>
-<link href="css/skdslider.css" rel="stylesheet">
-<!-- //main slider-banner -->
 <script>
 $(function(){
 $("html, body").scrollTop(0).animate({scrollTop: $("#scroll").offset().top});
 })
-function addCart(id,foodId) {
-    $("#"+id).text("已加入购物车!").show(300).delay(1000).hide(300);
-    //加入购物车
+function addCart(id,foodId,userId) {
+    if(userId!=''){
+        $("#"+id).text("已加入购物车!").show(300).delay(1000).hide(300);
+        //加入购物车
     $.ajax({
         url:"addToCart.action",
         dataType:"json",
         type:"POST",
         data:
-            {"foodId":foodId,"userId":1,quantity:1},
-        success:function (datas) {
-
-        }
-
+            {"foodId":foodId,"userId":userId,quantity:1},
     })
-
+    }else{
+        location.href="login.jsp";
+    }
 }
 </script>
     <script type="text/javascript">

@@ -11,12 +11,6 @@ import yy.eat.mapper.UserMapper;
 import yy.eat.service.SmsService;
 import yy.eat.utils.RestTest;
 
-/**
- * @author LinKaiLong
- * @Title:
- * @Description: (描述此类的功能)
- * @date 2017-03-31 16:29
- */
 @Service("smsService")
 public class SmsServiceImpl implements SmsService{
    	@Autowired
@@ -27,9 +21,9 @@ public class SmsServiceImpl implements SmsService{
 	final  String templateId = "28502";//短信模板id
 	@Override
 	public Boolean sendSMS(SmsData smsData) {
-		System.out.println("findUserByPhone"+userMapper.findUserByPhone(smsData.getPhone()));
 		if (null==userMapper.findUserByPhone(smsData.getPhone())) {
-			RestTest.testTemplateSMS(true, accountSid, authToken, appId, templateId, smsData.getPhone(),smsData.getCode());
+			RestTest.testTemplateSMS(true, accountSid, authToken, appId,
+					templateId, smsData.getPhone(),smsData.getCode());
 		    return Boolean.TRUE;
 		}
 		return Boolean.FALSE;

@@ -35,9 +35,10 @@
             o.ORDER_ID = od.ORDER_ID
         AND f.FOOD_ID = od.FOOD_ID
         AND o.USER_ID=#{userId}
+        ORDER BY o.CREATION_DATE DESC
     </select>
 
-    <insert id="insertOrder" parameterType="yy.eat.dto.Order" useGeneratedKeys="true" keyProperty="orderId">
+    <insert id="insertOrder" parameterType="yy.eat.dto.Order">
         INSERT INTO res_order (
             SERIAL_NUMBER,
             USER_ID,
@@ -49,5 +50,12 @@
         VALUES
             (
                #{serialNum},#{userId},#{addressId},#{totalPrice},#{customerRemark},#{status})
+
+        <selectKey keyProperty="orderId" resultType="Long" order="AFTER">
+
+            select LAST_INSERT_ID()
+
+        </selectKey>
     </insert>
+
 </mapper>

@@ -80,4 +80,13 @@
             #{item}
         </foreach>
     </select>
+
+    <delete id="delectOrderCart">
+        DELETE
+        FROM
+            res_cart
+        WHERE
+            USER_ID =#{userId}
+        AND FOOD_ID =#{foodId}
+    </delete>
 </mapper>

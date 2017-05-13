@@ -9,6 +9,7 @@
         <result column="ORIGINAL_PRICE" property="originalPrice"></result>
         <result column="DISCOUNT_PRICE" property="discountPrice"></result>
         <result column="SALE_VOLUME" property="saleVolume"></result>
+        <result column="SALE_FLAG" property="saleFlag"></result>
         <result column="DESCRIPTION" property="description"></result>
         <result column="DETAIL_ID" property="detailId"></result>
         <result column="PARENT_CUISINE_ID" property="parentCuisineId"></result>
@@ -42,16 +43,20 @@
         SELECT
         count(1)
         FROM
-        res_cuisine_detail rcd1,
-        res_cuisine_detail rcd2,
-        res_food rf
+        (
+        SELECT
+        *
+        FROM
+        res_cuisine_detail rcd
         WHERE
         FIND_IN_SET(
-        rcd1.DETAIL_ID,
+        rcd.DETAIL_ID,
         getChildList (#{entity.detailId})
         )
-        AND rcd1.DETAIL_ID = rcd2.PARENT_CUISINE_ID
-        AND rcd2.DETAIL_ID = rf.DETAIL_ID
+        ) rcd,
+        res_food rf
+        WHERE
+        rcd.detail_id = rf.detail_id
         <if test="entity.foodName!=null ">
             AND rf.FOOD_Name  like CONCAT('%', #{entity.foodName}, '%')
         </if>
@@ -68,5 +73,34 @@
         <if test="foodId!=null">
            AND RF.FOOD_ID = #{foodId}
         </if>
+    </select>
+
+    <update id="updateSaleVolume" >
+        UPDATE res_food
+        SET SALE_VOLUME = SALE_VOLUME + #{count}
+        WHERE
+            FOOD_ID =#{foodId}
+    </update>
+
+    <select id="selectSaleVolume" resultMap="baseResultMap">
+        SELECT
+            *
+        FROM
+            res_food
+        ORDER BY
+            SALE_VOLUME DESC
+        LIMIT 6
+    </select>
+
+    <select id="selectSalePrice" resultMap="baseResultMap">
+        SELECT
+            *
+        FROM
+            res_food
+        WHERE
+            SALE_FLAG = "Y"
+        ORDER BY
+            rand()
+        LIMIT 6
     </select>
 </mapper>

@@ -64,12 +64,23 @@ public class PayController {
         Address address1=addressService.selectAddressById(address);
         ModelAndView modelAndView =new ModelAndView();
         modelAndView.addObject("address",address1);
-        modelAndView.setViewName("address");
+        modelAndView.setViewName("updateAddress");
         return modelAndView;
     }
 
     @RequestMapping("/updateAddress")
     public void updateAddress(Address address){
         addressService.updateAddress(address);
+    }
+
+
+    @RequestMapping("/newAddress")
+    public void newAddress(Address address){
+        addressService.newAddress(address);
+    }
+
+    @RequestMapping("/deleteAddress")
+    public void deleteAddress(Address address){
+        addressService.deleteAddress(address);
     }
 }

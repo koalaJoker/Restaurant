@@ -9,6 +9,8 @@ import yy.eat.dto.Order;
 import yy.eat.mapper.OrderMapper;
 import yy.eat.service.OrderService;
 
+import java.util.List;
+
 /**
  * @author yuan.yuan01@hand-china.com
  * @name: OrderServiceImpl
@@ -25,5 +27,10 @@ public class OrderServiceImpl implements OrderService{
     public Long insertOrder(Order order) {
         Long orderId=orderMapper.insertOrder(order);
         return orderId;
+    }
+
+    @Override
+    public List<Order> getOrderByUserId(Long userId) {
+        return orderMapper.getOrderByUserId(userId);
     }
 }

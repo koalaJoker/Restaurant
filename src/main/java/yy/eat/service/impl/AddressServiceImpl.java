@@ -47,4 +47,14 @@ public class AddressServiceImpl implements AddressService{
     public void updateAddress(Address address) {
         addressMapper.updateAddress(address);
     }
+
+    @Override
+    public void deleteAddress(Address address) {
+        addressMapper.deleteAddress(address);
+    }
+
+    @Override
+    public void newAddress(Address address) {
+        addressMapper.newAddress(address);
+    }
 }

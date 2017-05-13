@@ -56,4 +56,16 @@
         WHERE
             a.ADDRESS_ID =#{addressId}
     </update>
+
+    <delete id="deleteAddress" parameterType="yy.eat.dto.Address">
+       DELETE  FROM res_address
+       WHERE ADDRESS_ID =#{addressId}
+
+    </delete>
+
+    <insert id="newAddress" parameterType="yy.eat.dto.Address">
+        INSERT INTO res_address (RECEIVER, TELEPHONE, ADDRESS ,DEFAULT_FLAG,USER_ID)
+        VALUES
+        (#{receiver},#{telephone},#{address},'N',#{userId})
+    </insert>
 </mapper>

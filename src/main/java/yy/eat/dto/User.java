@@ -4,12 +4,6 @@
  */
 package yy.eat.dto;
 
-/**
- * @author LinKaiLong
- * @Title:
- * @Description: (描述此类的功能)
- * @date 2017-03-31 20:32
- */
 public class User {
 	private int id;
 	private String name;

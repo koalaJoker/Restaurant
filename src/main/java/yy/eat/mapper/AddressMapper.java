@@ -41,4 +41,15 @@ public interface AddressMapper {
     * @param address
     */
    void updateAddress(Address address);
+
+   /**
+    * 删除地址
+    * @param address
+    */
+   void  deleteAddress(Address address);
+
+   /**
+    * 新增地址
+    */
+   void newAddress(Address address);
 }

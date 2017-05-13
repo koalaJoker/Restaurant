@@ -21,14 +21,22 @@
 <div class="agileits_header">
     <div class="container">
         <div class="w3l_offers">
-            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" .<a href="products.html">SHOP NOW</a></p>
+            <p><a href="products.html"></a></p>
         </div>
         <div class="agile-login">
             <ul>
                 <li><a href="register.jsp">注 册</a></li>
+                <c:if test="${userId==null}">
                 <li><a href="login.jsp">登 录</a></li>
-                <li><a href="contact.html">帮 助</a></li>
+                </c:if>
+                <c:if test="${userId!=null}">
+                    <li><a href="logOut.action">退 出 登 录</a></li>
+                </c:if>
 
+                <c:if test="${userId!=null}">
+                    <li></li> <li></li>
+                    <li><a>欢迎您！&nbsp;&nbsp;${userName}</a></li>
+                </c:if>
             </ul>
         </div>
         <div class="product_list_header">
@@ -38,11 +46,6 @@
                 <a href="/queryCart.action" style="color: white">购物车<i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
 
             </form>
-            <script>
-                $("#cartyy").click(function(){
-                    location.href="cart/query.action";
-                })
-            </script>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -52,16 +55,16 @@
     <div class="container">
         <div class="w3ls_logo_products_left1">
             <ul class="phone_email">
-                <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i>在线电话 : (+86) 1234 567</li>
 
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.html">super Market</a></h1>
+            <h1><a href="index.jsp">四叶草餐厅</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
-                <input type="search" name="Search" placeholder="Search for a Product..." required="">
+                <input type="search" name="Search" placeholder="搜索菜品..." required="">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
@@ -88,7 +91,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html" class="act">Home</a></li>
+                    <li class="active"><a href="index.jsp" class="act">主页</a></li>
 
                     <c:if test="${cuisineDetailList!=null}">
                         <c:forEach var="cuisine" items="${cuisineDetailList}">
@@ -114,9 +117,9 @@
                             </c:if>
                         </c:forEach>
                     </c:if>
-                    <li><a href="gourmet.html">Gourmet</a></li>
-                    <li><a href="offers.html">Offers</a></li>
-                    <li><a href="getOrders.action">订单管理</a></li>
+                    <%--<li><a href="gourmet.html">Gourmet</a></li>--%>
+                    <%--<li><a href="offers.html">Offers</a></li>--%>
+                    <li><a href="getOrders.action">我的订单</a></li>
                 </ul>
             </div>
         </nav>

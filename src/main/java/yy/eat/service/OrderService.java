@@ -5,6 +5,8 @@ package yy.eat.service;
 
 import yy.eat.dto.Order;
 
+import java.util.List;
+
 /**
  * @author yuan.yuan01@hand-china.com
  * @name: OrderService
@@ -14,4 +16,6 @@ import yy.eat.dto.Order;
 public interface OrderService {
 
     Long insertOrder(Order order);
+
+    List<Order> getOrderByUserId( Long  userId);
 }

@@ -44,4 +44,6 @@ public interface CartMapper {
     void deleteCart(Cart cart);
 
     List<Cart> selectOrderCart(@Param("list") List list);
+
+    void delectOrderCart(@Param("userId") Long userId,@Param("foodId") Long foodId);
 }

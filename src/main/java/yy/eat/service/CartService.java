@@ -26,4 +26,6 @@ public interface CartService {
     void deleteCart(Cart cart);
 
     List<Cart> selectOrderCart(List list);
+
+    void delectOrderCart(Long userId, Long foodId);
 }

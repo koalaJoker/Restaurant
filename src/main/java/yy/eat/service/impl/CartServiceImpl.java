@@ -52,4 +52,9 @@ public class CartServiceImpl implements CartService{
     public List<Cart> selectOrderCart(List list) {
         return cartMapper.selectOrderCart(list);
     }
+
+    @Override
+    public void delectOrderCart(Long userId, Long foodId) {
+        cartMapper.delectOrderCart(userId,foodId);
+    }
 }

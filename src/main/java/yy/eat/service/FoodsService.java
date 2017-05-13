@@ -22,4 +22,10 @@ public interface FoodsService {
     int foodsCount(PageData<CuisineDetail> pageData);
 
     Foods selectFoodById(Foods foods);
+
+    void updateSaleVolume( Long count, Long foodId);
+
+    List<Foods> selectSaleVolume();
+
+    List<Foods> selectSalePrice();
 }

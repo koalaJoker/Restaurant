@@ -32,4 +32,8 @@ public interface AddressService {
     Address selectAddressById(Address address);
 
     void updateAddress(Address address);
+
+    void  deleteAddress(Address address);
+
+    void newAddress(Address address);
 }

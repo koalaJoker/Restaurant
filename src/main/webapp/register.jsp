@@ -30,14 +30,8 @@
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-            });
-        });
-    </script>
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="css/personal.css" rel="stylesheet" type="text/css">
     <!-- start-smoth-scrolling -->
 </head>
 
@@ -50,8 +44,8 @@
 <div class="breadcrumbs">
     <div class="container" id="scroll">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Register Page</li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">注册</li>
         </ol>
     </div>
 </div>
@@ -64,7 +58,7 @@
         <h2>注册</h2>
         <div class="login-form-grids">
             <form  onsubmit="return check()" action="/regiest.action" method="post">
-            <h5>个人信息</h5>
+            <h4>个人信息</h4>
                 <input type="text" name="name" placeholder="姓名：" required="required " >
                 <div style="margin-top: 10px">
                     男：<input type="radio" name="sex" value="男">&nbsp;&nbsp;&nbsp;女：<input type="radio" name="sex" value="女"></div>
@@ -78,88 +72,32 @@
                 <input type="password" id="password2"  placeholder="确认密码" required=" " >
                 <div class="register-check-box">
                     <div class="check">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>我已阅读并同意相关服务条款和隐私政策</label>
                     </div>
                 </div>
-                <input type="submit" value="Register">
+                <input type="submit" value="注 册">
             </form>
         </div>
         <div class="register-home">
-            <a href="index.html">主页</a>
+            <a href="index.jsp">主页</a>
         </div>
     </div>
 </div>
 <!-- //register -->
 <!-- //footer -->
 <div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Contact</h3>
-
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Information</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Category</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Profile</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
-                </ul>
-
-
-            </div>
-            <div class="clearfix"> </div>
-        </div>
+    <div class="footer-hd ">
+        <p>
+            &nbsp;&nbsp;&nbsp;四叶草餐厅，给你做好的选择。
+        </p>
     </div>
-
-    <div class="footer-copy">
-
-        <div class="container">
-            <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.htmlsucai.com/">&#72;&#84;&#77;&#76;&#32032;&#26448;&#32593;</a></p>
-        </div>
-    </div>
-
-</div>
-<div class="footer-botm">
-    <div class="container">
-        <div class="&#72;&#84;&#77;&#76;&#32032;&#26448;&#32593;-foot">
-            <ul>
-                <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-        <div class="payment-w3ls">
-            <img src="images/card.png" alt=" " class="img-responsive">
-        </div>
-        <div class="clearfix"> </div>
+    <div class="footer-bd ">
+        <p>
+            <a href="# ">关于四叶草</a>
+            <a href="# ">合作伙伴</a>
+            <a href="# ">联系我们</a>
+            <em>(c) 2015-2025 yuanyuan.com 版权所有</em>
+        </p>
     </div>
 </div>
 <!-- //footer -->

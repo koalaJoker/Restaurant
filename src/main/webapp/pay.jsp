@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>结算</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
@@ -42,8 +42,8 @@
     <div class="breadcrumbs">
         <div class="container">
             <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-                <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-                <li class="active">Products</li>
+                <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+                <li class="active">下单</li>
             </ol>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <div class="address">
             <h3>确认送餐地址 </h3>
             <div class="control">
-                <div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+                <div class="tc-btn createAddr theme-login am-btn am-btn-danger" onclick="newAddress()">使用新地址</div>
             </div>
             <div class="clear"></div>
             <ul>
@@ -89,7 +89,7 @@
                         <span class="new-addr-bar hidden">|</span>
                         <a href="#" onclick="editAddress('${address.addressId}')">编辑</a>
                         <span class="new-addr-bar">|</span>
-                        <a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+                        <a href="javascript:void(0);" onclick="deleteAddress('${address.addressId}')">删除</a>
                     </div>
 
                 </li></c:if></c:forEach>
@@ -126,7 +126,7 @@
                         <span class="new-addr-bar">|</span>
                         <a href="#" onclick="editAddress('${address.addressId}')">编辑</a>
                         <span class="new-addr-bar">|</span>
-                        <a href="javascript:void(0);"  onclick="delClick(this);">删除</a>
+                        <a href="javascript:void(0);"  onclick="deleteAddress('${address.addressId}')">删除</a>
                     </div>
 
                 </li>
@@ -275,7 +275,7 @@
 
                 <div id="holyshit269" class="submitOrder">
                     <div class="go-btn-wrap">
-                        <a id="J_Go" href="#" onclick="submitOrder()" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                        <a id="J_Go" href="#"  onclick="submitOrder()"  class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -287,66 +287,48 @@
 </div>
 
 <div class="theme-popover-mask"></div>
-<div class="theme-popover">
+<%--<div class="theme-popover" id="newAddress">--%>
 
-    <!--标题 -->
-    <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">新增地址</strong> / <small>Add address</small></div>
-    </div>
-    <hr/>
+    <%--<!--标题 -->--%>
+    <%--<div class="am-cf am-padding">--%>
+        <%--<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">新增地址</strong> / <small>Add address</small></div>--%>
+    <%--</div>--%>
+    <%--<hr/>--%>
 
-    <div class="am-u-md-12">
-        <form class="am-form am-form-horizontal">
+    <%--<div class="am-u-md-12">--%>
+        <%--<form class="am-form am-form-horizontal">--%>
 
-            <div class="am-form-group">
-                <label for="user-name" class="am-form-label">收货人</label>
-                <div class="am-form-content">
-                    <input type="text" id="user-name" placeholder="收货人">
-                </div>
-            </div>
+            <%--<div class="am-form-group">--%>
+                <%--<label for="user-name" class="am-form-label">收货人</label>--%>
+                <%--<div class="am-form-content">--%>
+                    <%--<input type="text" id="user-name" placeholder="收货人">--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-            <div class="am-form-group">
-                <label for="user-phone" class="am-form-label">手机号码</label>
-                <div class="am-form-content">
-                    <input id="user-phone" placeholder="手机号必填" type="email">
-                </div>
-            </div>
+            <%--<div class="am-form-group">--%>
+                <%--<label for="user-phone" class="am-form-label">手机号码</label>--%>
+                <%--<div class="am-form-content">--%>
+                    <%--<input id="user-phone" placeholder="手机号必填" type="email">--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-            <div class="am-form-group">
-                <label for="user-phone" class="am-form-label">所在地</label>
-                <div class="am-form-content address">
-                    <select data-am-selected>
-                        <option value="a">浙江省</option>
-                        <option value="b">湖北省</option>
-                    </select>
-                    <select data-am-selected>
-                        <option value="a">温州市</option>
-                        <option value="b">武汉市</option>
-                    </select>
-                    <select data-am-selected>
-                        <option value="a">瑞安区</option>
-                        <option value="b">洪山区</option>
-                    </select>
-                </div>
-            </div>
+            <%--<div class="am-form-group">--%>
+                <%--<label for="user-intro" class="am-form-label">详细地址</label>--%>
+                <%--<div class="am-form-content">--%>
+                    <%--<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>--%>
+                    <%--<small>100字以内写出你的详细地址...</small>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-            <div class="am-form-group">
-                <label for="user-intro" class="am-form-label">详细地址</label>
-                <div class="am-form-content">
-                    <textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
-                    <small>100字以内写出你的详细地址...</small>
-                </div>
-            </div>
-
-            <div class="am-form-group theme-poptit">
-                <div class="am-u-sm-9 am-u-sm-push-3">
-                    <div class="am-btn am-btn-danger">保存</div>
-                    <div class="am-btn am-btn-danger close">取消</div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+            <%--<div class="am-form-group theme-poptit">--%>
+                <%--<div class="am-u-sm-9 am-u-sm-push-3">--%>
+                    <%--<div class="am-btn am-btn-danger " onclick="saveAddress()">保存</div>--%>
+                    <%--<div class="am-btn am-btn-danger close">取消</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</form>--%>
+    <%--</div>--%>
+<%--</div>--%>
 <div class="clear"></div>
 
 </div>
@@ -371,7 +353,8 @@
     }
 
     function setDefault(addressId) {
-        var userId=${session.userId};
+        var userId=${userId};
+        if(userId!=null){
         $.ajax({
             url:"addressDefault.action",
             dataType:"json",
@@ -381,7 +364,40 @@
 
         })
 
-        location.reload();
+        location.reload();}
+        else{
+            location.href="login.jsp";
+
+        }
+    }
+    function deleteAddress(addressId){
+        if (confirm("确认要删除？")) {
+        var userId=${userId};
+        if(userId!=null){
+            $.ajax({
+                url:"deleteAddress.action",
+                dataType:"json",
+                type:"POST",
+                data:
+                    {"addressId":addressId,"userId":userId},
+
+            })
+            location.reload();}
+        else{
+            location.href="login.jsp";
+
+        }
+        }
+    }
+
+    function newAddress(addressId){
+       var newAddressObj= window.open ('newAddress.jsp','newWindow','height=400,width=520,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no')
+        var loopnew=setInterval(function () {
+            if(newAddressObj.closed) {
+                clearInterval(loopnew);
+                location.reload();
+            }
+        }, 1000);
     }
     function submitOrder() {
         $("#orderForm").submit();

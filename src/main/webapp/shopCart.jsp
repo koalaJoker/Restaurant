@@ -9,7 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Single Page</title>
+    <title>购物车</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -32,6 +32,7 @@
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript" src="js/Calculation.js"></script>
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -43,7 +44,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            //jquery特效制作复选框全选反选取消(无插件)
+            //jquery特效制作复选框全选反选取消
             // 全选
             $(".allselect").click(function () {
 
@@ -136,8 +137,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Products</li>
+            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">购物车</li>
         </ol>
     </div>
 </div>
@@ -151,9 +152,10 @@
             <td class="tb1_td1"><input id="Checkbox1" type="checkbox"  class="allselect"/></td>
             <td class="tb1_td1">全选</td>
             <td class="tb1_td3">商品</td>
-            <td class="tb1_td4">商品信息</td>
+            <%--<td class="tb1_td4" >商品信息</td>--%>
             <td class="tb1_td5">数量</td>
             <td class="tb1_td6">单价</td>
+            <td class="tb1_td4">总价</td>
             <td class="tb1_td7">操作</td>
         </tr>
     </table>
@@ -225,17 +227,35 @@
     <c:forEach items="${cartList}" varStatus="status" var="cart">
     <table cellpadding="0" cellspacing="0" class="gwc_tb2">
         <tr>
-            <td class="tb2_td1"><input type="checkbox" value="${cart.foods.discountPrice*cart.quantity}" name="newslist" id="newslist-${status.count}" lang="${cart.cartId}"/></td>
-            <td class="tb2_td2"><a href="#"><img src="<%=request.getContextPath()%>/image.jsp?ppath=${cart.foods.foodImage}"/></a></td>
-            <td class="tb2_td3"><a href="#">${cart.foods.foodName}</a></td>
-            <td class="tb1_td4">一份</td>
-            <td class="tb1_td5">
-                <input id="min${status.count}" onclick="lessCount('min${status.count}',${status.count},${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
-                <input id="text_box${status.count}" name="" type="text" value="${cart.quantity}" onchange="changeCount('text_box${status.count}',${status.count},${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-                <input id="add${status.count}" onclick="addCount('add${status.count}',${status.count},${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+            <td class="tb2_td1">
+                <input type="checkbox" value="${cart.foods.discountPrice*cart.quantity}" name="newslist"
+                       id="newslist-${status.count}" lang="${cart.cartId}"/></td>
+            <td class="tb2_td2">
+                <a href="#">
+                    <img src="<%=request.getContextPath()%>/image.jsp?ppath=${cart.foods.foodImage}"/></a>
             </td>
-            <td class="tb1_td6"><label id="total${status.count}" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">${cart.foods.discountPrice*cart.quantity}</label></td>
-            <td class="tb1_td7"><a href="deleteCart.action?cartId=${cart.cartId}" onclick="return confirm('确实要删除吗？')">删除</a></td>
+            <td class="tb2_td3"><a href="#">${cart.foods.foodName}</a></td>
+            <td class="tb1_td5" >
+                <input id="min${status.count}"
+                       onclick="lessCount('min${status.count}',${status.count},
+                       ${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})"
+                       name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+                <input id="text_box${status.count}" name="" type="text" value="${cart.quantity}"
+                 onchange="changeCount('text_box${status.count}',${status.count},
+                 ${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})"
+                       style=" width:30px; text-align:center; border:1px solid #ccc;" />
+                <input id="add${status.count}"
+                       onclick="addCount('add${status.count}',${status.count},
+                       ${cart.foods.discountPrice},${cart.foods.foodId},${cart.quantity})"
+                       name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+            </td>
+            <td class="tb1_td6"><label  class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">${cart.foods.discountPrice}</label></td>
+            <td class="tb1_td4">
+                <label id="total${status.count}" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">
+                ${cart.foods.discountPrice*cart.quantity}</label></td>
+            <td class="tb1_td7">
+                <a href="deleteCart.action?cartId=${cart.cartId}" onclick="return confirm('确实要删除吗？')">
+                    删除</a></td>
         </tr>
     </table>
     </c:forEach>

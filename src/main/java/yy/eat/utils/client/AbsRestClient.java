@@ -141,17 +141,15 @@ public abstract class AbsRestClient {
 	 * callback
 	 */
 	public abstract String callback(String accountSid, String authToken,String appId,String fromClient,String to,String fromSerNum,String toSerNum);
+
 	/**
-	 * 
+	 *
 	 * @param accountSid
 	 * @param authToken
 	 * @param appId
 	 * @param to
 	 * @param verifyCode
-	 * @param displayNum
 	 * @return
-	 * String
-	 * voiceCode
 	 */
 	public abstract String voiceCode(String accountSid, String authToken,String appId,String to,String verifyCode);
 	/**
@@ -177,11 +175,11 @@ public abstract class AbsRestClient {
 	 * @return
 	 */
 	public abstract String findClientByMobile(String accountSid, String authToken,String mobile,String appId);
+
 	/**
-	 * 
+	 *
 	 * @param accountSid
 	 * @param authToken
-	 * @param mobile
 	 * @param appId
 	 * @param clientNumber
 	 * @param display

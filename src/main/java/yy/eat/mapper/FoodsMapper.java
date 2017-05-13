@@ -3,6 +3,7 @@
  */
 package yy.eat.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import yy.eat.dto.CuisineDetail;
 import yy.eat.dto.Foods;
 import yy.eat.dto.PageData;
@@ -22,4 +23,18 @@ public interface FoodsMapper {
    int foodsCount(PageData<CuisineDetail> pageData);
 
    Foods selectFoodById(Foods foods);
+
+   void updateSaleVolume(@Param("count") Long count, @Param("foodId") Long foodId);
+
+   /**
+    * 销量前6名
+    * @return
+    */
+   List<Foods> selectSaleVolume();
+
+   /**
+    * 随机6个特卖菜
+    * @return
+    */
+   List<Foods> selectSalePrice();
 }

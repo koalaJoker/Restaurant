@@ -47,11 +47,11 @@ public class RestTest {
 	}
 		
 	/**
-	 * 测试说明 参数顺序，请参照各具体方法参数名�?
-	 * 参数名称含义，请参�?rest api 文档
+	 * 测试说明 参数顺序，请参照各具体方法参数名?
+	 * 参数名称含义，请参?rest api 文档
 	 * @author Glan.duanyj
 	 * @date 2014-06-30
-	 * @param params[]
+	 * @param args
 	 * @return void
 	 * @throws IOException 
 	 * @method main

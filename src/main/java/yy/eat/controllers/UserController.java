@@ -20,12 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Random;
 
-/**
- * @author LinKaiLong
- * @Title:
- * @Description: (描述此类的功能)
- * @date 2017-03-31 10:28
- */
+
 @Controller
 public class UserController {
 	@Autowired
@@ -40,7 +35,6 @@ public class UserController {
 		sms.setPhone(request.getParameter("phone"));
 		sms.setCode(String.valueOf(radomInt));
 		Boolean falg=smsService.sendSMS(sms);
-		//Boolean falg=true;
 		if (falg)return sms.getCode();
        return Boolean.FALSE.toString();
 	}
@@ -54,11 +48,10 @@ public class UserController {
 	}
 	@RequestMapping("/login")
 	@ResponseBody
-	public ModelAndView loginUser(User user,HttpSession httpSession,HttpServletRequest request,HttpServletResponse response){
+	public ModelAndView loginUser(User user,HttpSession httpSession,HttpServletRequest request,
+								  HttpServletResponse response){
 		ModelAndView modelAndView=new ModelAndView();
-		System.out.println("rember+++++++++++++++++++==:"+request.getParameter("remberme"));
 		User findUser=userService.findUserByPhone(user.getPhone());
-		System.out.println("get phone and password="+user.getPhone()+"  "+user.getPassword());
 		if (null==findUser){
 			modelAndView.setViewName("login");
 			modelAndView.addObject("errorTip","该用户不存在!");
@@ -71,9 +64,9 @@ public class UserController {
 			modelAndView.setViewName("index");
 			//将用户信息存入cookie
 			if (null!=request.getParameter("remberme")){
-				Cookie cookie =new Cookie("phone#password",findUser.getPhone()+","+findUser.getPassword());
+				Cookie cookie =new Cookie("phone#password",findUser.getPhone()
+						+","+findUser.getPassword());
 				cookie.setMaxAge(60 * 60 * 24 * 30);
-				//cookie.setPath("/restaurant");
 				response.addCookie(cookie);
 			}
 			return modelAndView;
@@ -83,6 +76,20 @@ public class UserController {
 			modelAndView.addObject("phone",user.getPhone());
 			return modelAndView;
 		}
+	}
+
+	/**
+	 * 退出登录
+	 * @return
+	 */
+	@RequestMapping("/logOut")
+	@ResponseBody
+	public ModelAndView logOut(HttpServletRequest request,HttpServletResponse response){
+		request.getSession().removeAttribute("userId");
+		request.getSession().removeAttribute("userName");
+		ModelAndView modelAndView =new ModelAndView();
+		modelAndView.setViewName("login");
+		return modelAndView;
 	}
 }
 
